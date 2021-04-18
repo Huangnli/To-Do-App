@@ -1,0 +1,57 @@
+.main {
+    background-color: #262626;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 951px;
+    justify-content: space-evenly;
+    margin-bottom: 0;
+    margin: 0 0 0 0;
+}
+
+.logo {
+    width: 733px;
+    height: 275px;
+}
+
+.login {
+    background-color: #404040;
+    width: 603px;
+    height: 498px;
+    border-radius: 83px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.entrada {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-between;
+}
+
+#username-field {
+    width: 520px;
+    height: 89px;
+}
+
+#password-field {
+    width: 520px;
+    height: 89px;
+}
+
+.footer {
+    height: 81px;
+    width: 100%;
+    background-color: #404040;
+    align-items: flex-end;
+    margin: 0 0 0 0;
+}
+
+.botao {
+    width: 280px;
+    height: 89px;
+    background-color: #404040;
+}
