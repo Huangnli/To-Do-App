@@ -4,25 +4,32 @@
 <head>
     <meta charset="UTF-8" />
     <link href="style.css" rel="stylesheet" type="text/css">
-    <link href="main.css" rel="stylesheet" type="text/css">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
     <title></title>
 </head>
 
-<body class="background">
-    <div class="barra">
-        <label for="check">
+<body>
+    <div class="toolbar">
+        <label class="icon-menu" for="check">
             <img src="images/menu.svg">
         </label>
 
+        <img class="logo" src="./images/logologin.svg" alt="logo">
+        <img src="./images/settings.svg" alt="settings">
+        <img src="./images/user_login.svg" alt="user">
     </div>
 
-    <input type="checkbox" id="check">
-    <nav>
-        <ul>
-            <li><a href="#">Criar Lista</a></li>
-            <li><a href="#">Publicar Lista</a></li>
-        </ul>
-    </nav>
+    <div class="flex">
+        <div class="nav">
+            <input type="checkbox" id="check">
+            <nav>
+                <ul>
+                    <li><a href="#">Criar Lista</a></li>
+                    <li><a href="#">Publicar Lista</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 
     <script src="main.js"></script>
 </body>
