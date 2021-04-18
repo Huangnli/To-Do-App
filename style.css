@@ -1,8 +1,11 @@
-*{ 
-    margin:0;
-    padding:0;
-    font-family: Arial,sans-serif;
-  }
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
 
 .main {
     background-color: #262626;
@@ -13,12 +16,13 @@
     justify-content: space-evenly;
     margin-bottom: 0;
     margin: 0 0 0 0;
-   
 }
-.logo{
+
+.logo {
     width: 733px;
     height: 275px;
 }
+
 .login {
     background-color: #404040;
     width: 603px;
@@ -28,36 +32,34 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
 }
 
-
-.entrada{
+.entrada {
     display: flex;
     flex-direction: column;
     justify-content: center;
     justify-content: space-between;
-    
-   
 }
-#username-field{
+
+#username-field {
     width: 520px;
     height: 89px;
 }
-#password-field{
+
+#password-field {
     width: 520px;
     height: 89px;
 }
-.footer{
+
+.footer {
     height: 81px;
     width: 100%;
-    
     background-color: #404040;
     align-items: flex-end;
     margin: 0 0 0 0;
 }
 
-.botao{
+.botao {
     width: 280px;
     height: 89px;
     background-color: #404040;
