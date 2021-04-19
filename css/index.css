@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
 .main {
     background-color: #262626;
     display: flex;
@@ -7,6 +13,7 @@
     justify-content: space-evenly;
     margin-bottom: 0;
     margin: 0 0 0 0;
+
 }
 
 .logo {
@@ -15,43 +22,123 @@
 }
 
 .login {
-    background-color: #404040;
+    /*background-color: #404040;
     width: 603px;
     height: 498px;
     border-radius: 83px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-}
-
-.entrada {
+    align-items: center;*/
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    justify-content: space-between;
+    width: 600x;
+    height: 400px;
+    border-radius: 83px;
+    background-color: #404040;
 }
 
-#username-field {
-    width: 520px;
-    height: 89px;
+.wrapper {
+    width: 450px;
+    background: #404040;
+    padding: 30px;
+
 }
 
-#password-field {
-    width: 520px;
-    height: 89px;
-}
 
-.footer {
-    height: 81px;
+.wrapper .input-data {
+    height: 40px;
     width: 100%;
-    background-color: #404040;
-    align-items: flex-end;
-    margin: 0 0 0 0;
+    position: relative;
+    background-color: #262626;
+    display: flex;
 }
 
-.botao {
-    width: 280px;
-    height: 89px;
+
+.wrapper .input-data input{
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 20px;
     background-color: #404040;
+    color: #A6A6A6;
+    border-bottom: 2px solid #A6A6A6;
+   
+}
+
+.wrapper .input-data label {
+    font-size: 20px;
+    
+    
+}
+
+.input-data input:focus,
+.input-data input:focus:hover {
+    color: #A6A6A6;
+    outline: none;
+    outline-color: #A6A6A6;
+}
+
+.input-data input:focus~label,
+.input-data input:valid~label {
+    transform: translateY(-40px);
+    font-size: 18px;
+    color: #A6A6A6;
+}
+
+.wrapper .input-data label {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: #A6A6A6;
+    pointer-events: none;
+    transition: all 0.3s ease;
+
+}
+
+
+/* */
+.form-row {
+    width: 600px;
+    height: 89px;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    
+
+}
+
+
+.input-btn,
+.cadastrar-btn {
+    width: 300px;
+    height: 89px;
+    position: absolute;
+    border: none;
+    outline: none;
+    background: #404040;
+    font-size: 24px;
+    color: #A6A6A6;
+    border-radius: 20px;
+    transition: 500ms;
+}
+
+
+.input-btn:hover,
+.cadastrar-btn:hover {
+    background-color: #262626;
+    color: #A6A6A6;
+    border: 1px;
+    border-color: #262626;
+    transition: 500ms;
+}
+
+.footer{
+    color: #A6A6A6;
+    align-self: center;
+    font-size: 30px;
 }

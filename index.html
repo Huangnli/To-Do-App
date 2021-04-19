@@ -2,35 +2,50 @@
 <html>
 
 <head>
-  <link href="style.css" rel="stylesheet" type="text/css">
+  <link href="css/index.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="./css/index.css">
   <title></title>
 </head>
 
 <body class="main">
   <div class="main">
-    <img src="images/logologin.svg" alt="logo" class="logo">
-
-    <div class="login">
-      <div class="entrada">
-        <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
-        <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
+    <img src="/images/logologin.svg" alt="logo" class="logo">
+    <form  class="login" action="#">
+      <div class="login">
+        <div class="wrapper">
+          <div class="input-data">
+            
+            <input type="text" required>
+          
+              
+              <label>login</label>
+            
+            
+            
+            
+          </div>
+          
+        </div>
+        <div class="wrapper">
+          <div class="input-data">
+            <input type="password" required>
+            <label>senha</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-row submit-btn">
+            <input class="input-btn" type="submit" value="logar">
+          </div>
+          <div class="form-row submit-btn">
+            <input class="cadastrar-btn" type="button" value="cadastrar">
+          </div>
+        </div>
       </div>
-      <div class="botao">
-        <input type="submit" id="" value="Logar" />
-        <input type="submit" value="Registrar" />
-      </div>
-
-    </div>
+    </form>
   </div>
-
-
-
-
-  <div class="footer"></div>
-
-
-
+  
+    
+ 
   <script src="main.js"></script>
 </body>
 
