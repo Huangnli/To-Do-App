@@ -2,36 +2,41 @@
 <html>
 
 <head>
-    <meta charset="UTF-8" />
-    <link href="style.css" rel="stylesheet" type="text/css">
-    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8"/>
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
+    <link href="./css/main.css" rel="stylesheet" type="text/css">
     <title></title>
 </head>
 
 <body>
-    <div class="toolbar">
-        <label class="icon-menu" for="check">
-            <img src="./images/menu.svg">
-        </label>
-
-        <img class="logo" src="./images/logologin.svg" alt="logo">
-        <img src="./images/settings.svg" alt="settings">
-        <img src="./images/user_login.svg" alt="user">
-    </div>
-
-    <div class="flex">
-        <div class="nav">
-            <input type="checkbox" id="check">
-            <nav>
-                <ul>
-                    <li><a href="#">Criar Lista</a></li>
-                    <li><a href="#">Publicar Lista</a></li>
-                </ul>
-            </nav>
+    <header class="nav-bar">
+        <div id="nav-bar-left">
+            <label id="icon-menu" for="check">
+                <img src="images/menu.svg">
+            </label>
+            <img class="logo" src="./images/logologin.svg" alt="logo">
         </div>
-    </div>
 
-    <script src="main.js"></script>
+        <div id="search-bar">
+            <input id="search" type="search" placeholder="Search">
+            <img id="search-icon" src="./images/search.svg">
+        </div>
+
+        <div id="nav-bar-right">
+            <img src="./images/settings.svg" alt="settings">
+            <img src="./images/user_login.svg" alt="user">
+        </div>
+    </header>
+
+    <div class="nav">
+        <input type="checkbox" id="check">
+        <nav>
+            <ul>
+                <li><a href="#">Criar Lista</a></li>
+                <li><a href="#">Publicar Lista</a></li>
+            </ul>
+        </nav>
+    </div>
 </body>
 
 </html>
