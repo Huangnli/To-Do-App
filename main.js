@@ -1,15 +1,14 @@
-function validate() {
-    var username = document.getElementById("username-field").value;
-    var password = document.getElementById("password-field").value;
-    
-    if (username == "") {
-        alert("Please enter the username.");
-        return false;
-    }
-    if (password == "") {
-        alert("Please enter the password.");
-        return false;
-    }
-    alert('Login successful');
-                
-} 
+const form = document.getElementById('form');
+const username = document.getElementById('username');
+const password = document.getElementById('password');
+
+form.addEventListener('submit', (e) =>{
+    e.preventDefault();
+    
+    validacao();
+});
+
+function validacao(){
+    alert(password.value); //só pra teste
+
+}
