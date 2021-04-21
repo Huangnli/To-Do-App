@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <link href="./css/style.css" rel="stylesheet" type="text/css">
     <link href="./css/main.css" rel="stylesheet" type="text/css">
     <title></title>
@@ -28,14 +28,67 @@
         </div>
     </header>
 
-    <div class="nav">
-        <input type="checkbox" id="check">
-        <nav>
-            <ul>
-                <li><a href="#">Criar Lista</a></li>
-                <li><a href="#">Publicar Lista</a></li>
-            </ul>
-        </nav>
+    <div class="flex">
+        <div class="nav">
+            <input type="checkbox" id="check">
+            <nav>
+                <ul>
+                    <li><a href="#">Criar Lista</a></li>
+                    <li><a href="#">Publicar Lista</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <main class="listas">
+            <div class="lista">
+                <div class="lista-header">
+                    <h2 class="lista-nome">Nome da lista</h2>
+                    <img src="./images/more.svg" alt="more">
+                </div>
+                <div class="lista-tarefas">
+                    <div class="tarefa">
+                        <div>
+                            <input type="checkbox" id="check-tarefa">
+                            <span class="tarefa-titulo"></span>
+                        </div>
+                        <input type="text">
+                        <img src="./images/thrash.svg" alt="thrash">
+                    </div>
+                    <span class="tarefa"></span>
+                </div>
+                <div class="lista-tarefas">
+                    <div class="tarefa">
+                        <div>
+                            <input type="checkbox" id="check-tarefa">
+                            <span class="tarefa-titulo"></span>
+                        </div>
+                        <input type="text">
+                        <img src="./images/thrash.svg" alt="thrash">
+                    </div>
+                    <span class="tarefa"></span>
+                </div>
+            </div>
+
+            <div class="lista">
+                <div class="lista-header">
+                    <h2 class="lista-nome">Nome da lista</h2>
+                    <img src="./images/more.svg" alt="more">
+                </div>
+                <div class="lista-tarefas">
+                    <div class="tarefa">
+                        <div>
+                            <input type="checkbox" id="check-tarefa">
+                            <span class="tarefa-titulo"></span>
+                        </div>
+
+                        <input type="text">
+                        <img src="./images/thrash.svg" alt="thrash">
+                    </div>
+                    <span class="tarefa"></span>
+                </div>
+            </div>
+        </main>
+
     </div>
 </body>
 
