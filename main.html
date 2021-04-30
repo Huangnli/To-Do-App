@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <link href="./css/style.css" rel="stylesheet" type="text/css">
     <link href="./css/main.css" rel="stylesheet" type="text/css">
+
     <title></title>
 </head>
 
@@ -33,14 +34,15 @@
             <input type="checkbox" id="check">
             <nav>
                 <ul>
-                    <li><a href="#">Criar Lista</a></li>
+                    <li><button onclick="criaLista()" >Criar lista</button> </li>
                     <li><a href="#">Publicar Lista</a></li>
                 </ul>
             </nav>
         </div>
 
-        <main class="listas">
-            <div class="lista">
+        <main class="listas" id="lists">
+           
+           <!--- <div class="lista" id="list">
                 <div class="lista-header">
                     <h2 class="lista-nome">Nome da lista</h2>
                     <img src="./images/more.svg" alt="more">
@@ -86,10 +88,12 @@
                     </div>
                     <span class="tarefa"></span>
                 </div>
-            </div>
+            </div> -->
         </main>
 
     </div>
+
+    <script src="./js/main.js"></script> 
 </body>
 
 </html>

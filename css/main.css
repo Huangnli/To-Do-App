@@ -42,7 +42,7 @@ input[type="checkbox"]:checked~nav {
 }
 
 #nav-bar-left {
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .logo {
@@ -93,18 +93,20 @@ input[type="checkbox"]:checked~nav {
 
 .flex {
     display: flex;
+    
 }
 
 .listas {
     display: flex;
+    flex-wrap: wrap;
     margin: 20px;
 }
 
 .lista {
     margin: 10px;
     background-color: #404040;
-    height: 50vh;
-    width: 30vw;
+    height: 489px;
+    width: 360px;
     min-height: 250px;
     min-width: 250px;
     border-radius: 10px;
@@ -126,7 +128,7 @@ input[type="checkbox"]:checked~nav {
     font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 30px;
+    font-size: 25px;
     line-height: 41px;
     display: flex;
     align-items: center;
@@ -143,6 +145,14 @@ input[type="checkbox"]:checked~nav {
     justify-content: space-between;
     align-items: center;
 }
+
+
+.inputTarefa{
+   
+    text-align: center;
+    margin-right: 60px;
+}
+
 
 /* input[type="checkbox"]:checked~#check-tarefa {
     
