@@ -25,21 +25,24 @@ function criaLista(){ //Função que cria novas listas
     
     //Salva o texto do html a ser inserido (Nesse caso o html das listas)
     const text = 
-    `<div class="lista" id="${listaDeListas[idLista-1].id}">      
+    `
+    <div class="lista" id="${listaDeListas[idLista-1].id}">      
         <div class="lista-header">
             <h2 class="lista-nome">Nome da lista</h2>
-            <img src="./images/more.svg" alt="more">
+            <input id="tresPontinho${listaDeListas[idLista-1].id}" onclick="tresPontinho(this.id)" type="image"  src="./images/more.svg" alt="more">
         </div>
         <div class="lista-tarefas">
             <div class="tarefa">
                 <div>                  
                     <span class="tarefa-titulo"></span>
                 </div>
-                <input id="descricaoTarefa" class="inputTarefa" type="text" placeholder="Adicione uma tarefa">
-              
+                <input id="descricaoTarefa" class="inputTarefa" type="text" placeholder="+ Adicione uma tarefa">
+                
             </div>
             <span class="tarefa"></span>
-    </div>`
+        </div>    
+    </div>
+    `
 
     
     
@@ -48,21 +51,8 @@ function criaLista(){ //Função que cria novas listas
 
 
     adicionaTarefa();
-
-//Esse trecho é parte da implementação de remoção de tarefas, ainda não esta pronto
-/*    
-    const lixo = document.getElementById("lixo");
     
-    //Implementação da remoção de tarefas dentro da lista
-    //Por enquanto precisa ficar dentro dessa função caso contrário
-    //o html da lata de lixo ainda não existiria(Assim como a própria lista)
-    lixo.addEventListener('click',function(){
-        lixo.parentNode.parentNode.removeChild(lixo.parentNode);    
-     })
-
-*/
-
-
+   
 
 }
 
@@ -85,17 +75,9 @@ function adicionaTarefa(){
                     if(descricaoTarefa){
 
                         //Faz um texto html com a descrição digitada no input
-                        let text = `<h4 class="descricaoTarefa"> ${descricaoTarefa}</h4>`
-                        console.log(text);
-
-                        const position = "beforebegin"; //Paramêtro para inserir a lista antes do seu primeiro filho             
-                        event.target.parentNode.insertAdjacentHTML(position,text); //Injeta html antes do nó pai do input
-                        event.target.value=""; //Deleta o texto após apertar enter
-                        
-
-                        //Esse trecho são alguns testes pra separar os htmls com id's diferentes 
-                        console.log(event.target.parentNode.parentNode.parentNode.id); 
-
+                       
+                       
+                       
                         let idDalistaAux = event.target.parentNode.parentNode.parentNode.id;
 
                         let tarefaAux = {
@@ -106,15 +88,95 @@ function adicionaTarefa(){
                         listaDeListas[idDalistaAux].qtdTarefas+=1;
                         listaDeListas[idDalistaAux].tarefas.push(tarefaAux);
                         console.log(listaDeListas[idDalistaAux].tarefas[0].idTarefa);
+                                                                                                                               
+                       
+                        let text = `
+                        <div>
+                            <img id="lixo" class="lixeira" src="./images/thrash.svg" alt="thrash">
+                            <input type="checkbox" class="checkbox" id="checkbox">
+                            <h4 id="${listaDeListas[idDalistaAux].qtdTarefas-1}" class="textoTarefa">${descricaoTarefa}</h4>                           
+                        </div>    
+                        `
+                        console.log(text);
+
+                        const position = "beforebegin"; //Paramêtro para inserir a lista antes do seu primeiro filho             
+                   
+                        event.target.parentNode.insertAdjacentHTML(position,text); //Injeta html antes do nó pai do input
+                        event.target.value=""; //Deleta o texto após apertar enter
+                        
+
+                        //Esse trecho são alguns testes pra separar os htmls com id's diferentes 
+                        console.log(event.target.parentNode.parentNode.parentNode.id); 
+
+                        deletaTarefa();
                                                                                                 
                     }
                 }
         });
      
+}
+
+
+function deletaTarefa(){
+
+    document.addEventListener('click',function(event){
+               
+        if(event.target.id==="lixo" && event.target.parentNode.parentNode!=null){
+           
+            var vetorFilhos = event.target.parentNode.children; //pega o id da tarefa
+            var listaClicadaNoEvento = event.target.parentNode.parentNode.parentNode.id; //Pega o Id da lista clicada
+
+            //Vetorfilhos está no 2 porque é o que corresponde a tarefa descrita no html
+            //Ou seja é o terceiro filho 
+
+            //esse console log serve pra mostrar que a tarefa especifica da lista clicada foi removida
+            //do campo de tarefas da lista
+            //antes
+            console.log(listaDeListas[listaClicadaNoEvento].tarefas[vetorFilhos[2].id]); 
+
+            //Remove a tarefa da lista, splice(Indice que começa a remover elementos, quantidade de elementos pra serem removidos)
+            listaDeListas[listaClicadaNoEvento].tarefas.splice(vetorFilhos[2].id,1);
+
+            //depois
+            console.log(listaDeListas[listaClicadaNoEvento].tarefas[vetorFilhos[2].id]);
+
+            //Aqui remove o html
+            event.target.parentNode.parentNode.removeChild(event.target.parentNode);
+                      
+        }        
+     });
 
 }
 
 
+
+function tresPontinho(idTarg){
+
+    console.log(idTarg);
+
+    var docPontinhos = document.getElementById(idTarg);
+
+    console.log(docPontinhos);
+
+        
+    console.log("oi");    
+    let text = `
+    <div class="caixaMenu" id="caixaMenu">
+        <img id="canetaMenu" class="lixeira" src="./images/caneta.svg">
+        <h4 id="menuTrocaNome">Renomear lista</h4>
+        <img id="lixoMenu" class="lixeiraMenu" src="./images/thrash.svg">
+        <h4 id="menuApagaLista">Apagar lista</h4>                           
+    </div>    
+    `
+
+    var position="afterend";
+    
+
+    docPontinhos.parentNode.parentNode.insertAdjacentHTML(position,text);
+
+
+
+}
 
 
 

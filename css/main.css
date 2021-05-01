@@ -24,6 +24,7 @@ nav {
     border-top-right-radius: 30px;
     transform: translateX(-150px);
     transition: all .3s;
+    
 }
 
 input[type="checkbox"]:checked~nav {
@@ -43,10 +44,13 @@ input[type="checkbox"]:checked~nav {
 
 #nav-bar-left {
     padding-left: 5px;
+   
+    
 }
 
 .logo {
     height: 35px;
+    
 }
 
 #icon-menu {
@@ -93,6 +97,7 @@ input[type="checkbox"]:checked~nav {
 
 .flex {
     display: flex;
+
     
 }
 
@@ -110,6 +115,12 @@ input[type="checkbox"]:checked~nav {
     min-height: 250px;
     min-width: 250px;
     border-radius: 10px;
+    
+    overflow: auto;
+     
+    flex-wrap: wrap;
+    
+   
 }
 
 .lista-header {
@@ -140,7 +151,7 @@ input[type="checkbox"]:checked~nav {
     margin-right: 20px;
 }
 
-.tarefa {
+.tarefa {   
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -148,11 +159,108 @@ input[type="checkbox"]:checked~nav {
 
 
 .inputTarefa{
-   
+    position:relative;
+    top: 20px;
+    background-color: #404040;
+    color: white;
+    margin-left: 50px;
+    margin-right: 20px;
     text-align: center;
     margin-right: 60px;
+    border: 1px;
+    font-size: large;
+
+
 }
 
+
+/*box sizing: border-box mantem responsividade
+mesmo mexendo com padding, border,margin*/
+
+/*position desbloqueia top left right bottom
+e conseguimos movimentar o nosso elemento*/
+
+
+.textoTarefa{
+    color: #ffffff;   
+    text-align: center;
+    word-break: break-all;
+    margin-right: 30px;
+    margin-left: 35px;
+    
+
+}
+
+.lixeira{   
+    position: relative;
+    top: 22px;
+    left: 300px;
+    
+}
+
+.checkbox{
+    position: relative;
+    top:22px;
+  
+}
+
+.criaLista{
+    font-size: 18px;
+    padding:10px;
+    position:relative;
+    top:10px;
+    left:10px;
+    background-color: #404040;
+    
+}
+
+.caixaMenu{
+    position: relative;
+    top: 50px;
+    right: 155px;
+    padding: 19px; 
+    margin-bottom: 500px;
+    border: solid 1px rgb(0, 0, 0);
+    background-color: rgb(38, 0, 255);
+
+    margin-right: 0px;
+    
+
+}
+
+.lixeiraMenu{
+    position: relative;   
+    right: 2px;
+    top: -13px;
+    height: 14px;
+    
+}
+
+#canetaMenu{
+    position: relative;
+    left: -1px;
+    top: 0px;
+    color: #404040;
+
+
+    height: 12px;
+}
+
+#menuApagaLista{
+    position: relative;
+    top: -30px;
+    right: -15px;
+    font-size: 14px;
+}
+
+#menuTrocaNome{
+    position: relative;
+    top: -17px;
+
+    font-size: 14px;
+    right: -15px;
+
+}
 
 /* input[type="checkbox"]:checked~#check-tarefa {
     
