@@ -15,6 +15,7 @@ function criaLista(){ //Função que cria novas listas
         nome: "Lista "+idLista,
         isActive: true,
         qtdTarefas: 0,
+        menuClicado: false,
         tarefas: []
     };
     
@@ -47,7 +48,10 @@ function criaLista(){ //Função que cria novas listas
     
     
     const position = "afterbegin"; //Paramêtro para inserir a lista após do seu primeiro filho
+    
+    
     lists.insertAdjacentHTML(position,text); //Metodo para inserção do html da nova lista
+
 
 
     adicionaTarefa();
@@ -152,28 +156,56 @@ function deletaTarefa(){
 
 function tresPontinho(idTarg){
 
-    console.log(idTarg);
+  
 
     var docPontinhos = document.getElementById(idTarg);
+    var objListaClicada= docPontinhos.parentNode.parentNode;
 
-    console.log(docPontinhos);
+    console.log(docPontinhos.parentNode.parentNode);
 
-        
-    console.log("oi");    
-    let text = `
-    <div class="caixaMenu" id="caixaMenu">
-        <img id="canetaMenu" class="lixeira" src="./images/caneta.svg">
-        <h4 id="menuTrocaNome">Renomear lista</h4>
-        <img id="lixoMenu" class="lixeiraMenu" src="./images/thrash.svg">
-        <h4 id="menuApagaLista">Apagar lista</h4>                           
-    </div>    
-    `
+    var vetorFilhosListaClicada = objListaClicada.children;
 
-    var position="beforeend"; //tem que ser beforeend pro menu ficar dentro do html da lista, se não a caixa vaza e empurra os outros elementos
+    console.log(objListaClicada); //lista obj
     
 
-    docPontinhos.parentNode.parentNode.insertAdjacentHTML(position,text);
+    if(listaDeListas[objListaClicada.id].menuClicado===true){
+        listaDeListas[objListaClicada.id].menuClicado=false;
+    }else{
+        listaDeListas[objListaClicada.id].menuClicado=true;
+    }
+
+    if(listaDeListas[objListaClicada.id].menuClicado===true){
+        let text = `
+        <div class="caixaMenu" id="caixaMenu">
+            <img id="canetaMenu" class="lixeira" src="./images/caneta.svg">
+            <h4 id="menuTrocaNome">Renomear lista</h4>
+            <img id="lixoMenu" class="lixeiraMenu" src="./images/thrash.svg">
+            <h4 id="menuApagaLista">Apagar lista</h4>                           
+        </div>    
+        `
+
+        var position="afterend"; //tem que ser beforeend pro menu ficar dentro do html da lista, se não a caixa vaza e empurra os outros elementos
 
 
+        docPontinhos.parentNode.insertAdjacentHTML(position,text);
+    }else{
+
+
+        for(var i = 0; i < vetorFilhosListaClicada.length ; i++){
+
+            
+
+            if(vetorFilhosListaClicada[i].className==="caixaMenu"){
+                console.log(objListaClicada.parentNode.parentNode.parentNode);
+                console.log(vetorFilhosListaClicada[i]);
+                objListaClicada.removeChild(vetorFilhosListaClicada[i]);
+            }
+
+        }
+
+
+    }
+
+    
 
 }
