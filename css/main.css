@@ -208,13 +208,14 @@ e conseguimos movimentar o nosso elemento*/
 
 .caixaMenu {
     position: relative;
-    top: -47px;
-    right: -223px;
+    top: -20px;
+    right: -203px;
     padding: 15px; 
     margin-bottom: 10px;
     border: solid 1px rgb(0, 0, 0);
-    background-color: rgb(38, 0, 255);
+    background-color: #404040;
     
+    border-radius: 10px;
     width: 100px;
     height: 50px;
 
@@ -239,16 +240,18 @@ e conseguimos movimentar o nosso elemento*/
 
 #menuApagaLista {
     position: relative;
-    top: -30px;
+    top: -32px;
     right: -15px;
     font-size: 14px;
+    color: #ffffff;
 }
 
 #menuTrocaNome {
     position: relative;
-    top: -17px;
+    top: -21px;
     font-size: 14px;
     right: -15px;
+    color: #ffffff;
 }
 
 /* input[type="checkbox"]:checked~#check-tarefa {
