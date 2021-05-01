@@ -169,7 +169,7 @@ function tresPontinho(idTarg){
     </div>    
     `
 
-    var position="afterend";
+    var position="beforeend"; //tem que ser beforeend pro menu ficar dentro do html da lista, se não a caixa vaza e empurra os outros elementos
     
 
     docPontinhos.parentNode.parentNode.insertAdjacentHTML(position,text);
@@ -177,6 +177,3 @@ function tresPontinho(idTarg){
 
 
 }
-
-
-

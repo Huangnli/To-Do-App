@@ -208,12 +208,17 @@ e conseguimos movimentar o nosso elemento*/
 
 .caixaMenu {
     position: relative;
-    top: 50px;
-    right: 155px;
-    padding: 19px;
-    margin-bottom: 500px;
+    top: -47px;
+    right: -223px;
+    padding: 15px; 
+    margin-bottom: 10px;
     border: solid 1px rgb(0, 0, 0);
     background-color: rgb(38, 0, 255);
+    
+    width: 100px;
+    height: 50px;
+
+    
     margin-right: 0px;
 }
 
