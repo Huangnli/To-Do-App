@@ -1,4 +1,3 @@
-
 let listaDeListas = [];
 let idLista = 0;
 
@@ -16,6 +15,7 @@ function criaLista(){ //Função que cria novas listas
         isActive: true,
         qtdTarefas: 0,
         menuClicado: false,
+        renomeiaClicado: false,
         tarefas: []
     };
     
@@ -30,7 +30,7 @@ function criaLista(){ //Função que cria novas listas
     <div class="lista" id="${listaDeListas[idLista-1].id}">      
         <div class="lista-header">
             <h2 class="lista-nome">Nome da lista</h2>
-            <input id="tresPontinho${listaDeListas[idLista-1].id}" onclick="tresPontinho(this.id)" type="image"  src="./images/more.svg" alt="more">
+            <input class="tresPontinho" id="tresPontinho${listaDeListas[idLista-1].id}" onclick="tresPontinho(this.id)" type="image"  src="./images/more.svg" alt="more">
         </div>
         <div class="lista-tarefas">
             <div class="tarefa">
@@ -136,7 +136,7 @@ function deletaTarefa(){
             //esse console log serve pra mostrar que a tarefa especifica da lista clicada foi removida
             //do campo de tarefas da lista
             //antes
-            console.log(listaDeListas[listaClicadaNoEvento].tarefas[vetorFilhos[2].id]); 
+        
 
             //Remove a tarefa da lista, splice(Indice que começa a remover elementos, quantidade de elementos pra serem removidos)
             listaDeListas[listaClicadaNoEvento].tarefas.splice(vetorFilhos[2].id,1);
@@ -175,7 +175,8 @@ function tresPontinho(idTarg){
     }
 
     if(listaDeListas[objListaClicada.id].menuClicado===true){
-        let text = `
+        
+        /*let text = `
         <div class="caixaMenu" id="caixaMenu">
             <img id="canetaMenu" class="lixeira" src="./images/caneta.svg">
             <h4 id="menuTrocaNome">Renomear lista</h4>
@@ -183,6 +184,15 @@ function tresPontinho(idTarg){
             <h4 id="menuApagaLista">Apagar lista</h4>                           
         </div>    
         `
+        */
+
+        let text = `<div class="caixaMenu" id="caixaMenu">
+            <input type="image" class="canetaMenu" id="canetaMenu${objListaClicada.id}" onclick="renomeiaLista(this.id)" src="./images/caneta.svg">
+            <button onclick="renomeiaLista(this.id)" class="menuTrocaNome" id="menuTrocaNome${objListaClicada.id}">Renomear lista</button>
+            <input type="image" id="lixoMenu${objListaClicada.id}" onclick="deletaLista(this.id)" class="lixeiraMenu" src="./images/thrash.svg">
+            <button id="menuApagaLista${objListaClicada.id}"  onclick="deletaLista(this.id)" class="menuApagaLista" >Apagar lista</button>
+        </div>`
+
 
         var position="afterend"; //tem que ser beforeend pro menu ficar dentro do html da lista, se não a caixa vaza e empurra os outros elementos
 
@@ -209,3 +219,95 @@ function tresPontinho(idTarg){
     
 
 }
+
+function renomeiaLista(idTarg){
+
+    var elementoAux = document.getElementById(idTarg);
+  
+
+
+    
+
+    var vetorFilhosListaClicada = elementoAux.parentNode.parentNode.children;
+    var nomeLista = vetorFilhosListaClicada[0].childNodes[0];
+
+
+
+    //tratamento pra não criar (digite um nome) infinitos
+    if(listaDeListas[elementoAux.parentNode.parentNode.id].renomeiaClicado===false){
+        
+        //tratamento pra não criar (digite um nome) infinitos
+        listaDeListas[elementoAux.parentNode.parentNode.id].renomeiaClicado=true;
+    
+        let text = `<input id="insiraTarefa" class="insereTarefa" type="text" placeholder="Digite um nome">`;
+
+
+        //Remove texto do header
+        vetorFilhosListaClicada[0].removeChild(vetorFilhosListaClicada[0].childNodes[1]);
+
+        //Insere input no header
+        elementoAux.parentNode.parentNode.children[0].insertAdjacentHTML("afterbegin",text);
+
+
+
+        console.log(elementoAux.parentNode.parentNode.children[0].children[0]);
+
+        var inputTemporario = elementoAux.parentNode.parentNode.children[0].children[0];
+
+        inputTemporario.addEventListener("keyup",function(event){
+
+            let inputTarefa = document.getElementById("descricaoTarefa");
+
+            //Pega o texto digitado no input
+            const nomeNovo = event.target.value;
+
+            if(event.key === "Enter"){
+
+                //tratamento pra não criar (digite um nome) infinitos
+                listaDeListas[elementoAux.parentNode.parentNode.id].renomeiaClicado=false;
+                
+                if(nomeNovo){
+
+                    //Faz um texto html com a descrição digitada no input                                                                                                                                           
+                    let text = `
+                        <h2>${nomeNovo}</h2>   
+                    `
+                    
+                    const position = "afterbegin"; //Paramêtro para inserir a lista antes do seu primeiro filho             
+                
+                    event.target.parentNode.insertAdjacentHTML(position,text); 
+                                
+                    
+                    listaDeListas[elementoAux.parentNode.parentNode.id].nome = nomeNovo;
+                    
+                                    
+                    inputTemporario.parentNode.removeChild(inputTemporario);  //deleta o elemento
+                    
+                    
+
+                    
+                                                                                            
+                }
+            }
+        });
+
+    }
+
+
+}
+
+
+function deletaLista(idTarg){
+
+    var elementoAux = document.getElementById(idTarg);
+    var listaDeletada = elementoAux.parentNode.parentNode;
+    
+
+    listaDeletada.parentNode.removeChild(listaDeletada);
+    
+    //listaDeListas.splice(listaDeletada.id,1);
+
+}
+
+
+
