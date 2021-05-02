@@ -84,6 +84,9 @@ function adicionaTarefa(){
                        
                         let idDalistaAux = event.target.parentNode.parentNode.parentNode.id;
 
+                        console.log(event.target.parentNode.parentNode.parentNode.id);
+
+
                         let tarefaAux = {
                             idTarefa : listaDeListas[idDalistaAux].qtdTarefas,
                             descricao : descricaoTarefa
@@ -302,10 +305,25 @@ function deletaLista(idTarg){
     var elementoAux = document.getElementById(idTarg);
     var listaDeletada = elementoAux.parentNode.parentNode;
     
+    //Essa lista dos filhos foi pega pois é necessário ajustar os id's dos html's após a remoção
+    var listaAuxiliarDeListas = elementoAux.parentNode.parentNode.parentNode.children;
 
+
+    idLista=idLista-1;
+
+    //Remoção da lista de listas
+    listaDeListas.splice(listaDeletada.id,1);
+
+    //Remoção do html
     listaDeletada.parentNode.removeChild(listaDeletada);
-    
-    //listaDeListas.splice(listaDeletada.id,1);
+
+
+    //Organiza os indices da listas
+    for(var i=0; i<listaAuxiliarDeListas.length; i++){
+        listaAuxiliarDeListas[i].id = i;
+    }
+
+
 
 }
 
