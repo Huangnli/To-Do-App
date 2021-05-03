@@ -1,36 +1,50 @@
-let listaDeListas = [];
-let idLista = 0;
+
+/***********************IMPORTANTE*********************/
+/* 
+
+Esse codigo ainda tem uns dois bugs que eu consegui identificar mas ainda não consertei,
+um deles você consegue ver acontecendo criando 3 listas, deletando a lista do meio, e criando mais uma
+por algum motivo, os 3 pontinhos de uma das listas vai abrir em outra, acredito que seja por conta da organização dos id's
+na hora da criação das listas ou na hora deletar.
+
+O segundo bug parece ter a mesma causa do primeiro, os id's estão se bagunçando em algum ponto e não consigo renomear uma das listas
+ainda não identifiquei o padrão do erro, mas é um erro que acontece, mas o erro para se você deletar a lista e fazer outra.
+
+*/
 
 
+//O propósito dessa lista é guardar os objetos correspondente as listas
+//isso auxilia nas funções onde precisamos saber os id's,nomes entre outras informações
+var listaDeListas = [];  
 
-const lists = document.getElementById("lists");
+
+var lists = document.getElementById("lists");
 
 
 function criaLista(){ //Função que cria novas listas
 
     //Guardo informação das listas criadas para uso futuro
     let listaAux = { 
-        id: idLista,
-        nome: "Lista "+idLista,
-        isActive: true,
-        qtdTarefas: 0,
-        menuClicado: false,
-        renomeiaClicado: false,
+        //Utilizei o tamanho da lista ao invés de um contador, porque como pode acontecer de a lista deletar
+        //Os id's poderiam ficar bagunçados
+        id: listaDeListas.length,
+        nome: "Lista "+listaDeListas.length,
+        isActive: true,  
+        qtdTarefas: 0, 
+        menuClicado: false,          //Utilizado na função de menu
+        renomeiaClicado: false,      //Utilizado na função de renomear
         tarefas: []
     };
     
-    idLista=idLista+1;
-    listaDeListas.push(listaAux);
+    listaDeListas.push(listaAux);       //Insere a lista na lista de listas
 
-
-    
     //Salva o texto do html a ser inserido (Nesse caso o html das listas)
-    const text = 
+    let text = 
     `
-    <div class="lista" id="${listaDeListas[idLista-1].id}">      
+    <div class="lista" id="${listaDeListas[listaDeListas.length-1].id}">      
         <div class="lista-header">
             <h2 class="lista-nome">Nome da lista</h2>
-            <input class="tresPontinho" id="tresPontinho${listaDeListas[idLista-1].id}" onclick="tresPontinho(this.id)" type="image"  src="./images/more.svg" alt="more">
+            <input class="tresPontinho" id="tresPontinho${listaDeListas[listaDeListas.length-1].id}" onclick="tresPontinho(this.id)" type="image"  src="./images/more.svg" alt="more">
         </div>
         <div class="lista-tarefas">
             <div class="tarefa">
@@ -44,19 +58,14 @@ function criaLista(){ //Função que cria novas listas
         </div>    
     </div>
     `
-
+ 
     
-    
-    const position = "afterbegin"; //Paramêtro para inserir a lista após do seu primeiro filho
-    
-    
+    let position = "afterbegin"; //Paramêtro para inserir a lista dentro do elemento html, mas antes do primeiro filho
+     
     lists.insertAdjacentHTML(position,text); //Metodo para inserção do html da nova lista
-
-
-
-    adicionaTarefa();
     
-   
+    adicionaTarefa(); //Chamo a função adicionaTarefa(); para ligar o listener que seria a barra onde digitamos o nome da tarefa
+     
 
 }
 
@@ -72,49 +81,42 @@ function adicionaTarefa(){
                 let inputTarefa = document.getElementById("descricaoTarefa");
 
                 //Pega o texto digitado no input
-                const descricaoTarefa = event.target.value;
+                let descricaoTarefa = event.target.value;
 
                 if(event.key === "Enter"){
                     
                     if(descricaoTarefa){
-
-                        //Faz um texto html com a descrição digitada no input
-                       
-                       
-                       
+                           
+                        //Como o event corresponde ao input de adicione uma tarefa, precisamos
+                        //acessar os pais pra chegar na divisão da lista
                         let idDalistaAux = event.target.parentNode.parentNode.parentNode.id;
-
-                        console.log(event.target.parentNode.parentNode.parentNode.id);
-
-
+            
                         let tarefaAux = {
                             idTarefa : listaDeListas[idDalistaAux].qtdTarefas,
                             descricao : descricaoTarefa
                         };
 
+                        //Atualizamos algumas informações da lista
                         listaDeListas[idDalistaAux].qtdTarefas+=1;
                         listaDeListas[idDalistaAux].tarefas.push(tarefaAux);
-                        console.log(listaDeListas[idDalistaAux].tarefas[0].idTarefa);
-                                                                                                                               
-                       
+
+                                                                                                                                                     
+                        //Html da tarefa digitada a ser inserido
                         let text = `
                         <div>
                             <img id="lixo" class="lixeira" src="./images/thrash.svg" alt="thrash">
-                            <input type="checkbox" class="checkbox" id="checkbox">
+                            <input type="checkbox" class="checkbox" id="checkbox${listaDeListas[idDalistaAux].qtdTarefas-1}" onclick="checkTarefa(this.id)" >
                             <h4 id="${listaDeListas[idDalistaAux].qtdTarefas-1}" class="textoTarefa">${descricaoTarefa}</h4>                           
                         </div>    
-                        `
-                        console.log(text);
+                        `                  
 
-                        const position = "beforebegin"; //Paramêtro para inserir a lista antes do seu primeiro filho             
+                        let position = "beforebegin"; //Paramêtro para inserir a lista antes do elemento            
                    
                         event.target.parentNode.insertAdjacentHTML(position,text); //Injeta html antes do nó pai do input
                         event.target.value=""; //Deleta o texto após apertar enter
                         
 
-                        //Esse trecho são alguns testes pra separar os htmls com id's diferentes 
-                        console.log(event.target.parentNode.parentNode.parentNode.id); 
-
+                        //Chamamos o deletaTarefa para ligar o listener da caixa de lixo
                         deletaTarefa();
                                                                                                 
                     }
@@ -130,22 +132,14 @@ function deletaTarefa(){
                
         if(event.target.id==="lixo" && event.target.parentNode.parentNode!=null){
            
-            var vetorFilhos = event.target.parentNode.children; //pega o id da tarefa
-            var listaClicadaNoEvento = event.target.parentNode.parentNode.parentNode.id; //Pega o Id da lista clicada
+            let vetorFilhos = event.target.parentNode.children; //pega os filhos do nó pai, retorna um vetor
+            let listaClicadaNoEvento = event.target.parentNode.parentNode.parentNode.id; //Pega o Id da lista clicada
 
-            //Vetorfilhos está no 2 porque é o que corresponde a tarefa descrita no html
-            //Ou seja é o terceiro filho 
-
-            //esse console log serve pra mostrar que a tarefa especifica da lista clicada foi removida
-            //do campo de tarefas da lista
-            //antes
-        
+            console.log(vetorFilhos[2]);
 
             //Remove a tarefa da lista, splice(Indice que começa a remover elementos, quantidade de elementos pra serem removidos)
+            //vetorFilhos[2] porque o texto da tarefa é o terceiro filho 
             listaDeListas[listaClicadaNoEvento].tarefas.splice(vetorFilhos[2].id,1);
-
-            //depois
-            console.log(listaDeListas[listaClicadaNoEvento].tarefas[vetorFilhos[2].id]);
 
             //Aqui remove o html
             event.target.parentNode.parentNode.removeChild(event.target.parentNode);
@@ -161,16 +155,19 @@ function tresPontinho(idTarg){
 
   
 
-    var docPontinhos = document.getElementById(idTarg);
-    var objListaClicada= docPontinhos.parentNode.parentNode;
+    let docPontinhos = document.getElementById(idTarg); //Documento correspondente ao menu dos três pontinhos
+
+    let objListaClicada= docPontinhos.parentNode.parentNode;  //Documento da lista clicada
 
     console.log(docPontinhos.parentNode.parentNode);
 
-    var vetorFilhosListaClicada = objListaClicada.children;
+    let vetorFilhosListaClicada = objListaClicada.children;  
 
     console.log(objListaClicada); //lista obj
     
 
+
+    //Isso é um tratamento só poder fechar quando aberto, e o contrário.
     if(listaDeListas[objListaClicada.id].menuClicado===true){
         listaDeListas[objListaClicada.id].menuClicado=false;
     }else{
@@ -179,16 +176,7 @@ function tresPontinho(idTarg){
 
     if(listaDeListas[objListaClicada.id].menuClicado===true){
         
-        /*let text = `
-        <div class="caixaMenu" id="caixaMenu">
-            <img id="canetaMenu" class="lixeira" src="./images/caneta.svg">
-            <h4 id="menuTrocaNome">Renomear lista</h4>
-            <img id="lixoMenu" class="lixeiraMenu" src="./images/thrash.svg">
-            <h4 id="menuApagaLista">Apagar lista</h4>                           
-        </div>    
-        `
-        */
-
+        //Html do Menu
         let text = `<div class="caixaMenu" id="caixaMenu">
             <input type="image" class="canetaMenu" id="canetaMenu${objListaClicada.id}" onclick="renomeiaLista(this.id)" src="./images/caneta.svg">
             <button onclick="renomeiaLista(this.id)" class="menuTrocaNome" id="menuTrocaNome${objListaClicada.id}">Renomear lista</button>
@@ -197,23 +185,19 @@ function tresPontinho(idTarg){
         </div>`
 
 
-        var position="afterend"; //tem que ser beforeend pro menu ficar dentro do html da lista, se não a caixa vaza e empurra os outros elementos
-
+        let position="afterend"; //Insere o html do menu após o elemento dos pontinhos
 
         docPontinhos.parentNode.insertAdjacentHTML(position,text);
+
     }else{
+        //Nesse else tratamos quando apertamos nos tres pontinhos e o menu fecha
 
-
-        for(var i = 0; i < vetorFilhosListaClicada.length ; i++){
-
-            
-
+        //Esse for corre o vetor de filhos do elemento lista
+        //Quando o elemento filho for a caixa de menu, ele remove o mesmo.
+        for(let i = 0; i < vetorFilhosListaClicada.length ; i++){
             if(vetorFilhosListaClicada[i].className==="caixaMenu"){
-                console.log(objListaClicada.parentNode.parentNode.parentNode);
-                console.log(vetorFilhosListaClicada[i]);
                 objListaClicada.removeChild(vetorFilhosListaClicada[i]);
             }
-
         }
 
 
@@ -225,14 +209,11 @@ function tresPontinho(idTarg){
 
 function renomeiaLista(idTarg){
 
-    var elementoAux = document.getElementById(idTarg);
+    //Elemento do botão de renomeiar
+    let elementoAux = document.getElementById(idTarg);   
+
+    let vetorFilhosListaClicada = elementoAux.parentNode.parentNode.children;
   
-
-
-    
-
-    var vetorFilhosListaClicada = elementoAux.parentNode.parentNode.children;
-    var nomeLista = vetorFilhosListaClicada[0].childNodes[0];
 
 
 
@@ -242,10 +223,11 @@ function renomeiaLista(idTarg){
         //tratamento pra não criar (digite um nome) infinitos
         listaDeListas[elementoAux.parentNode.parentNode.id].renomeiaClicado=true;
     
+        //html do input pra digitar um nome novo
         let text = `<input id="insiraTarefa" class="insereTarefa" type="text" placeholder="Digite um nome">`;
 
 
-        //Remove texto do header
+        //Remove texto do header, é o filho da posição 1, nas listas
         vetorFilhosListaClicada[0].removeChild(vetorFilhosListaClicada[0].childNodes[1]);
 
         //Insere input no header
@@ -253,16 +235,17 @@ function renomeiaLista(idTarg){
 
 
 
-        console.log(elementoAux.parentNode.parentNode.children[0].children[0]);
 
-        var inputTemporario = elementoAux.parentNode.parentNode.children[0].children[0];
 
+        //Pegamos agora o elemento do input onde vamos digitar o novo nome da lista
+        let inputTemporario = elementoAux.parentNode.parentNode.children[0].children[0];
+
+
+        //Adicionamos um listener a esse elemento e checamos se enter foi apertado
         inputTemporario.addEventListener("keyup",function(event){
 
-            let inputTarefa = document.getElementById("descricaoTarefa");
-
             //Pega o texto digitado no input
-            const nomeNovo = event.target.value;
+            let nomeNovo = event.target.value;
 
             if(event.key === "Enter"){
 
@@ -273,18 +256,17 @@ function renomeiaLista(idTarg){
 
                     //Faz um texto html com a descrição digitada no input                                                                                                                                           
                     let text = `
-                        <h2>${nomeNovo}</h2>   
+                        <h2 class="nomeNovo" >${nomeNovo}</h2>   
                     `
                     
-                    const position = "afterbegin"; //Paramêtro para inserir a lista antes do seu primeiro filho             
+                    let position = "afterbegin"; //Paramêtro para inserir a lista antes do seu primeiro filho             
                 
                     event.target.parentNode.insertAdjacentHTML(position,text); 
                                 
-                    
+                    //Ajuste do nome da lista
                     listaDeListas[elementoAux.parentNode.parentNode.id].nome = nomeNovo;
                     
-                                    
-                    inputTemporario.parentNode.removeChild(inputTemporario);  //deleta o elemento
+                    inputTemporario.parentNode.removeChild(inputTemporario);  //O input deleta a si mesmo
                     
                     
 
@@ -302,14 +284,14 @@ function renomeiaLista(idTarg){
 
 function deletaLista(idTarg){
 
-    var elementoAux = document.getElementById(idTarg);
-    var listaDeletada = elementoAux.parentNode.parentNode;
+    let elementoAux = document.getElementById(idTarg);
+    let listaDeletada = elementoAux.parentNode.parentNode;
     
     //Essa lista dos filhos foi pega pois é necessário ajustar os id's dos html's após a remoção
-    var listaAuxiliarDeListas = elementoAux.parentNode.parentNode.parentNode.children;
+    let listaAuxiliarDeListas = elementoAux.parentNode.parentNode.parentNode.children;
 
 
-    idLista=idLista-1;
+    //idLista=idLista-1;
 
     //Remoção da lista de listas
     listaDeListas.splice(listaDeletada.id,1);
@@ -319,13 +301,82 @@ function deletaLista(idTarg){
 
 
     //Organiza os indices da listas
-    for(var i=0; i<listaAuxiliarDeListas.length; i++){
+    for(let i=0; i<listaAuxiliarDeListas.length; i++){
         listaAuxiliarDeListas[i].id = i;
+        listaDeListas[i].id = i;
     }
-
-
 
 }
 
 
 
+function checkTarefa(idTarg){
+
+    let checkBox = document.getElementById(idTarg); //Pegamos o elemento da checkbox
+
+    let paiCheckBox = checkBox.parentNode;  //Pegamos o elemento pai do checkbox
+
+    let textoTarefa = paiCheckBox.children[2]; //O terceiro filho é o elemento do texto da tarefa
+
+
+    //Adiciona um estilo para a tarefa completada
+    if(checkBox.checked){
+        textoTarefa.style.textDecoration = "line-through";
+    }else{
+        textoTarefa.style.textDecoration = "none";
+    }
+        
+
+}
+
+
+function buscaTarefa(idTarg){
+
+    let barraBusca = document.getElementById(idTarg); //Pegamos o elemento da barra de busca
+
+    //Adicionamos um listener e verificamos se enter vai ser apertado
+    barraBusca.addEventListener("keyup",function(event){
+
+        if(event.key==="Enter"){
+
+           
+
+            //Corremos a nossa lista de listas, para assim verificar os 
+            //elementos que não correspondem com o nome digitado no input
+            //Se não puxamos o elemento da lista pelo id, e escondemos ele
+            //com o display="none", ficando somente visivel os elementos com o nome correspondente ao digitado
+            for(let i = 0 ; i < listaDeListas.length ; i++){
+
+                if(listaDeListas[i].nome!==event.target.value){
+
+                    let listaEscondida = document.getElementById(listaDeListas[i].id);
+                    
+                    if(listaEscondida!==null)
+                        listaEscondida.style.display="none";                    
+                }
+
+            }
+
+            //Aqui nesse outro for ele verifica se não tem nada digitado na barra, assim fazendo todos os elementos
+            //aparecerem novamente
+            for(let i = 0 ; i < listaDeListas.length ; i++){
+
+                if(event.target.value===""){ 
+                    let listaEscondida = document.getElementById(listaDeListas[i].id);
+
+                    if(listaEscondida!==null)
+                        listaEscondida.style.display="block";  
+                }
+
+             }
+
+        }
+
+
+    });
+
+
+
+
+
+}
