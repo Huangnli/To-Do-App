@@ -1,18 +1,3 @@
-
-/***********************IMPORTANTE*********************/
-/* 
-
-Esse codigo ainda tem uns dois bugs que eu consegui identificar mas ainda não consertei,
-um deles você consegue ver acontecendo criando 3 listas, deletando a lista do meio, e criando mais uma
-por algum motivo, os 3 pontinhos de uma das listas vai abrir em outra, acredito que seja por conta da organização dos id's
-na hora da criação das listas ou na hora deletar.
-
-O segundo bug parece ter a mesma causa do primeiro, os id's estão se bagunçando em algum ponto e não consigo renomear uma das listas
-ainda não identifiquei o padrão do erro, mas é um erro que acontece, mas o erro para se você deletar a lista e fazer outra.
-
-*/
-
-
 //O propósito dessa lista é guardar os objetos correspondente as listas
 //isso auxilia nas funções onde precisamos saber os id's,nomes entre outras informações
 var listaDeListas = [];  
@@ -240,6 +225,11 @@ function renomeiaLista(idTarg){
         //Pegamos agora o elemento do input onde vamos digitar o novo nome da lista
         let inputTemporario = elementoAux.parentNode.parentNode.children[0].children[0];
 
+        //Vamos guardar a lista Pai do input
+        let inputPai = inputTemporario.parentNode.parentNode;
+
+        console.log(inputTemporario);
+
 
         //Adicionamos um listener a esse elemento e checamos se enter foi apertado
         inputTemporario.addEventListener("keyup",function(event){
@@ -250,7 +240,7 @@ function renomeiaLista(idTarg){
             if(event.key === "Enter"){
 
                 //tratamento pra não criar (digite um nome) infinitos
-                listaDeListas[elementoAux.parentNode.parentNode.id].renomeiaClicado=false;
+                listaDeListas[inputPai.id].renomeiaClicado=false;
                 
                 if(nomeNovo){
 
@@ -264,7 +254,7 @@ function renomeiaLista(idTarg){
                     event.target.parentNode.insertAdjacentHTML(position,text); 
                                 
                     //Ajuste do nome da lista
-                    listaDeListas[elementoAux.parentNode.parentNode.id].nome = nomeNovo;
+                    listaDeListas[inputPai.id].nome = nomeNovo;
                     
                     inputTemporario.parentNode.removeChild(inputTemporario);  //O input deleta a si mesmo
                     
@@ -282,32 +272,41 @@ function renomeiaLista(idTarg){
 }
 
 
-function deletaLista(idTarg){
+function deletaLista(idTarg) {
 
     let elementoAux = document.getElementById(idTarg);
     let listaDeletada = elementoAux.parentNode.parentNode;
-    
-    //Essa lista dos filhos foi pega pois é necessário ajustar os id's dos html's após a remoção
-    let listaAuxiliarDeListas = elementoAux.parentNode.parentNode.parentNode.children;
 
-
-    //idLista=idLista-1;
-
-    //Remoção da lista de listas
-    listaDeListas.splice(listaDeletada.id,1);
+    let paiLista = listaDeletada.parentNode;
+    console.log(paiLista)
 
     //Remoção do html
     listaDeletada.parentNode.removeChild(listaDeletada);
 
+    //Essa lista dos filhos foi pega pois é necessário ajustar os id's dos html's após a remoção
+    let listaAuxiliarDeListas = paiLista.children;
+
+    //Remoção da lista de listas
+    listaDeListas.splice(listaDeletada.id, 1);
+
 
     //Organiza os indices da listas
-    for(let i=0; i<listaAuxiliarDeListas.length; i++){
-        listaAuxiliarDeListas[i].id = i;
-        listaDeListas[i].id = i;
+    for (let i = listaAuxiliarDeListas.length-1; i >=0; i--) {
+
+        listaAuxiliarDeListas[i].id = (listaAuxiliarDeListas.length-1)-i;
+        listaDeListas[i].id = (listaAuxiliarDeListas.length-1)-i;
+    }
+    console.log(listaDeListas)
+
+    //Organiza os id's dos 3 pontihos
+    for(let i = listaAuxiliarDeListas.length-1; i >=0; i--){
+        console.log(listaAuxiliarDeListas[i].children[0].children[1].id );
+        listaAuxiliarDeListas[i].children[0].children[1].id = `tresPontinho${(listaAuxiliarDeListas.length-1)-i}`;
+        console.log(listaAuxiliarDeListas[i].children[0].children[1].id );
     }
 
-}
 
+}
 
 
 function checkTarefa(idTarg){
