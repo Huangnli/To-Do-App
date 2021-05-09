@@ -88,7 +88,7 @@ function adicionaTarefa(){
                                                                                                                                                      
                         //Html da tarefa digitada a ser inserido
                         let text = `
-                        <div>
+                        <div class="tarefa">
                             <img id="lixo" class="lixeira" src="./images/thrash.svg" alt="thrash">
                             <input type="checkbox" class="checkbox" id="checkbox${listaDeListas[idDalistaAux].qtdTarefas-1}" onclick="checkTarefa(this.id)" >
                             <h4 id="${listaDeListas[idDalistaAux].qtdTarefas-1}" class="textoTarefa">${descricaoTarefa}</h4>                           

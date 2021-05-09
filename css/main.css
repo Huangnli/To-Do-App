@@ -111,7 +111,7 @@ input[type="checkbox"]:checked~nav {
 .listas {
     display: flex;
     flex-wrap: wrap;
-    margin: 20px;
+    margin: 0px 20px 20px 20px;
 }
 
 .lista {
@@ -128,12 +128,14 @@ input[type="checkbox"]:checked~nav {
 
 .lista-header {
     margin: 20px;
+    width: 320px;
+    height: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.lista-nome {
+.lista-nome, .nomeNovo {
     color: #ffffff;
     width: 199px;
     height: 23px;
@@ -142,7 +144,7 @@ input[type="checkbox"]:checked~nav {
     font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 25px;
+    font-size: 30px;
     line-height: 41px;
     display: flex;
     align-items: center;
@@ -152,12 +154,13 @@ input[type="checkbox"]:checked~nav {
 .lista-tarefas {
     margin-left: 20px;
     margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .tarefa {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 100%;
 }
 
 .inputTarefa {
@@ -165,12 +168,14 @@ input[type="checkbox"]:checked~nav {
     top: 20px;
     background-color: #404040;
     color: white;
-    margin-left: 50px;
-    margin-right: 20px;
+    margin-left: 40px;
+    font-size: 20px;
     text-align: center;
-    margin-right: 60px;
+    align-self: center;
     border: 1px;
-    font-size: large;
+    outline: none;
+    border-bottom: 2px solid #A6A6A6;
+   
 }
 
 /*box sizing: border-box mantem responsividade
@@ -211,11 +216,13 @@ e conseguimos movimentar o nosso elemento*/
 .caixaMenu {
     position: relative;
     top: -20px;
-    width: 200px;
-    height: 110px;
+    width: 148px;
+    height: 77px;
+    left: 210px;
     right: -159px;
     border-radius: 10px;
     background-color: #262626;
+    
 }
 
 .caixaMenu button:hover {
@@ -249,7 +256,7 @@ e conseguimos movimentar o nosso elemento*/
     font-size: 14px;
     padding: 10px 5px;
     border-radius: 10px;
-    color: #ffffff;
+    color: #A6A6A6;
     background-color: #262626;
 }
 
@@ -262,28 +269,26 @@ e conseguimos movimentar o nosso elemento*/
     font-size: 14px;
     padding: 10px 5px;
     border-radius: 10px;
-    color: #ffffff;
+    color: #A6A6A6;
     background-color: #262626;
 }
 
 .insereTarefa {
     position: relative;
-    top: 10px;
+    
     left: 5px;
     width: 200px;
-    height: 20px;
-    font-size: 15px;
+    height: 30px;
+    font-size: 20px;
     color: #F2F2F2;
     background-color: #404040;
     border: none;
 }
 
-.nomeNovo{
-    color:#F2F2F2;
-    font-family: Open Sans;
-    font-style: normal;
-    font-weight: normal;
+.checkbox:checked ~ .textoTarefa{
+    color: #262626;
 }
+
 
 /* input[type="checkbox"]:checked~#check-tarefa {
     
