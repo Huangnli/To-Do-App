@@ -7,6 +7,6 @@ form.addEventListener('submit', (e) =>{
 });
 
 function validacao(){
-    alert(form.username.value); //só pra teste
+    
 
 }

@@ -29,12 +29,9 @@
 
 .login {
     align-self: center;
-    margin-top: 5em; 
+    margin-top: 3em; 
     width: 30%;
     height: 50%;
-   
-
-   
     border-radius: 83px;
     background-color: #404040;
     
@@ -130,12 +127,7 @@
     transition: 500ms;
   
 }
-/*
-.footer {
-    color: #A6A6A6;
-    align-self: center;
-    font-size: 30px;
-}*/
+
 .footer {
     position: fixed;
     left: 0;
@@ -144,5 +136,6 @@
     background-color: #404040;
     color: white;
     text-align: center;
+    font-size: 15px;
  }
 

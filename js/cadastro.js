@@ -8,6 +8,6 @@ formC.addEventListener('submit', (e) =>{
 
 
 function validacao(){
-    alert(formC.username.value); //só pra teste
+    
 
 }
