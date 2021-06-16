@@ -14,9 +14,10 @@ class CreateTarefasTable extends Migration
     public function up()
     {
         Schema::create('tarefas', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('nome');
             $table->boolean('concluida')->default(false);
+            $table->unsignedBigInteger('id_lista');
             $table->foreign('id_lista')->references('id')->on('listas');
             $table->timestamps();
         });

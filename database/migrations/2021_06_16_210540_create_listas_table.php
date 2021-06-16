@@ -14,9 +14,10 @@ class CreateListasTable extends Migration
     public function up()
     {
         Schema::create('listas', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('nome')->nullable();
             $table->date('prazo_final')->nullable();
+            $table->unsignedBigInteger('id_usuario');
             $table->foreign('id_usuario')->references('id')->on('usuarios');
             $table->timestamps();
         });
