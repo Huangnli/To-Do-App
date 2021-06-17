@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Tarefa extends Model
 {
     use HasFactory;
+
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'concluida' => false,
+    ];
 }
