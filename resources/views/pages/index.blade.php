@@ -36,8 +36,25 @@
       </nav>
     </div>
 
-    <main class="listas" id="lists">
-    </main>
+    @if(count($listas) > 0)
+      @foreach($listas as $lista)
+        <div class="lista">
+          <div class="lista-header">
+            <h2 class="lista-nome">{{$lista->nome}}</h2>
+            <input class="tresPontinho" onclick="tresPontinho(this.id)" type="image" src="{{ URL::asset('images/more.svg') }}" alt="more">
+          </div>
+          <div class="lista-tarefas">
+            <div class="tarefa">
+              <div>
+                <span class="tarefa-titulo"></span>
+              </div>
+              <input id="descricaoTarefa" class="inputTarefa" type="text" placeholder="+ Adicione uma tarefa">
+            </div>
+            <span class="tarefa"></span>
+          </div>
+        </div>
+      @endforeach
+    @endif
   </div>
 
   <script type="text/javascript" src="{{ URL::asset('js/index.js') }}"></script>

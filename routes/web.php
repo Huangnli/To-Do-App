@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ListasController;
+use App\Http\Controllers\TarefasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,10 @@ use App\Http\Controllers\PagesController;
 Route::get('/', [PagesController::class, 'index']);
 Route::get('/cadastro', [PagesController::class, 'cadastro']);
 Route::get('/login', [PagesController::class, 'login']);
+
+Route::resource('listas', ListasController::class, ['only' => [
+  'create', 'store', 'show', 'edit', 'update', 'destroy'
+]]);
+Route::resource('listas.tarefas', TarefasController::class, ['only' => [
+  'create', 'store', 'show', 'edit', 'update', 'destroy'
+]]);
