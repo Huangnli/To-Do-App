@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('metadata')
-  <title>Worklist - Login</title>
-  <link href="{{ asset('css/login.css') }}" rel="stylesheet" type="text/css">
+  <title>Worklist - Cadastro</title>
+  <link href="{{ asset('css/register.css') }}" rel="stylesheet" type="text/css">
 @endsection
 
 @section('content')
@@ -22,13 +22,13 @@
       </div>
     @endif
 
-    <form class="login" id="formCadastro" autocomplete="off" method="post" action="{{ route('login') }}">
+    <form class="login" id="formCadastro" autocomplete="off" method="post" action="{{ route('register') }}">
       @csrf
       <div class="box">
         <div class="wrapper">
           <div class="input-data">
             <input type="email" id="email" name="email" required>
-            <label><span class="material-icons">email</span> Login</label>
+            <label><span class="material-icons">email</span> Email</label>
           </div>
         </div>
         <div class="wrapper">
@@ -37,13 +37,14 @@
             <label><span class="material-icons">lock</span> Senha</label>
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-row submit-btn">
-            <input class="input-btn" type="submit" value="Logar">
+        <div class="wrapper">
+          <div class="input-data">
+            <input type="password" id="passwordConf" name="password_confirmation" required>
+            <label><span class="material-icons">lock</span> Confirmar senha</label>
           </div>
-          <a class="form-row submit-btn" href="{{ route('register') }}">
-            <input class="cadastrar-btn" type="button" value="Cadastrar">
-          </a>
+        </div>
+        <div class="form-row submit-btn">
+          <input class="cadastrar-btn" type="submit" value="Cadastrar">
         </div>
       </div>
     </form>

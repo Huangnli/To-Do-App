@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tarefa extends Model
+class Task extends Model
 {
     use HasFactory;
 
@@ -15,6 +15,6 @@ class Tarefa extends Model
      * @var array
      */
     protected $attributes = [
-        'concluida' => false,
+        'is_checked' => false,
     ];
 }

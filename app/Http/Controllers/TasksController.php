@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Lista;
+use App\Models\Task;
 
-class ListasController extends Controller
+class TasksController extends Controller
 {
     /**
      * Show the form for creating a new resource.

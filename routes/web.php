@@ -1,9 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PagesController;
-use App\Http\Controllers\ListasController;
-use App\Http\Controllers\TarefasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,13 +13,20 @@ use App\Http\Controllers\TarefasController;
 |
 */
 
-Route::get('/', [PagesController::class, 'index']);
-Route::get('/cadastro', [PagesController::class, 'cadastro']);
-Route::get('/login', [PagesController::class, 'login']);
+Route::get('/', function () {
+    return view('pages.welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('pages.dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::resource('listas', ListasController::class, ['only' => [
-  'create', 'store', 'show', 'edit', 'update', 'destroy'
+'create', 'store', 'show', 'edit', 'update', 'destroy'
 ]]);
+
 Route::resource('listas.tarefas', TarefasController::class, ['only' => [
-  'create', 'store', 'show', 'edit', 'update', 'destroy'
+'create', 'store', 'show', 'edit', 'update', 'destroy'
 ]]);
+
+require __DIR__.'/auth.php';
