@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,16 +18,14 @@ Route::get('/', function () {
     return view('pages.welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('pages.dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
-Route::resource('listas', ListasController::class, ['only' => [
-'create', 'store', 'show', 'edit', 'update', 'destroy'
-]]);
+Route::post('/lists/create', [DashboardController::class, 'createList']);
+Route::match(['put', 'patch'], '/lists/{list}', [DashboardController::class, 'updateList']);
+Route::delete('/lists/{list}', [DashboardController::class, 'deleteList']);
 
-Route::resource('listas.tarefas', TarefasController::class, ['only' => [
-'create', 'store', 'show', 'edit', 'update', 'destroy'
-]]);
+Route::post('/lists/{list}/tasks/create', [DashboardController::class, 'createTask']);
+Route::match(['put', 'patch'], '/lists/{list}/tasks/{task}', [DashboardController::class, 'updateTask']);
+Route::delete('/lists/{list}/tasks/{task}', [DashboardController::class, 'deleteTask']);
 
 require __DIR__.'/auth.php';
