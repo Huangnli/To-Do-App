@@ -19,3 +19,6 @@ To-Do é uma aplicação web para gerenciamento de tarefas diárias simples. Com
 
 # Protótipo
 Link da animação: https://www.figma.com/proto/z1uJ4AraOW27aZELQ3czFv/WorklistP02?node-id=2%3A0&scaling=scale-down&page-id=0%3A1
+
+# Mini tutorial para executar o projeto
+Link: https://gist.github.com/hootlex/da59b91c628a6688ceb1
