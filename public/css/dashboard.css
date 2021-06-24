@@ -1,0 +1,243 @@
+body {
+  background: var(--clr-foreground);
+}
+
+header {
+  background: var(--clr-secondary);
+  padding: 1em;
+  font-family: 'Inter', sans-serif;
+}
+
+.bar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+@media (max-width: 1046px) {
+  .bar-container {
+    margin: 0;
+  }
+}
+
+.bar-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Raleway', sans-serif;
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: var(--fw-bold);
+  color: var(--clr-white);
+}
+
+.logo span {
+  color: var(--clr-primary);
+}
+
+.create-list {
+  background-color: var(--clr-secondary);
+  font-weight: var(--fw-bold);
+  font-size: 1em;
+  color: var(--clr-gray);
+  margin-left: 2em;
+  border: 0;
+  cursor: pointer;
+}
+
+.create-list:hover {
+  color: var(--clr-white);
+}
+
+.bar-right {
+  color: var(--clr-gray);
+}
+
+.icon-settings:hover, .icon-user:hover {
+  color: var(--clr-white);
+  cursor: pointer;
+}
+
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.search-bar {
+  display: flex;
+  width: 33%;
+  min-width: 300px;
+  border: 2px solid var(--clr-gray);
+  border-radius: 10px;
+  background: var(--clr-white);
+  padding: 5px;
+}
+
+.search-bar-input {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  padding-left: 10px;
+}
+
+.search-bar-btn {
+  all: revert;
+  border: 0;
+  background: var(--clr-white);
+  box-shadow: none;
+  color: var(--clr-gray-dark);
+  cursor: pointer;
+}
+
+.search-bar-btn:hover, .search-bar-btn:focus {
+  color: var(--clr-primary);
+}
+
+main {
+  display: grid;
+  align-content: start;
+  justify-content: center;
+  gap: 2em;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 30rem));
+  width: 95%;
+  margin: 50px auto;
+}
+
+.list-container {
+  background: var(--clr-white);
+  width: 100%;
+  border: 2px solid var(--clr-gray);
+  padding: 1.5em;
+}
+
+.list-info {
+  font-family: 'Inter', sans-serif;
+  color: var(--clr-black);
+}
+
+.list-name {
+  width: 100%;
+  font-weight: var(--fw-bold);
+  font-size: 1.3em;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.list-name:focus {
+  outline: none;
+  border: 1px solid var(--clr-primary);
+}
+
+.list-deadline {
+  display: none;
+}
+
+.task-container {
+  height: 200px;
+  margin-top: 2em;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1em;
+}
+
+.task-item-container {
+  display: flex;
+  align-items: center;
+}
+
+.task-info {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+input[type=checkbox] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  border: 2px solid var(--clr-primary);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type=checkbox]:after {
+  content: "\e876";
+  font-family: "Material Icons";
+  font-weight: 1000;
+  font-size: 1.2em;
+  color: var(--clr-primary);
+  display: none;
+}
+
+input[type=checkbox]:checked:after {
+  display: block;
+}
+
+input[type=checkbox]:checked~.task-name {
+  text-decoration: line-through;
+  color: var(--clr-gray-dark);
+}
+
+.task-name {
+  flex: 1;
+  margin-left: 0.8em;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9em;
+  border: 1px solid transparent;
+}
+
+.task-name:focus {
+  outline: none;
+  border:1px solid var(--clr-primary);
+}
+
+.list-options-container {
+  display: flex;
+  align-items: center;
+}
+
+.new-task-input {
+  display: flex;
+  flex: 1;
+  border-radius: 10px;
+  background: var(--clr-gray-light);
+  padding: 5px;
+}
+
+.name-new-task {
+  flex: 1;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9em;
+  color: var(--clr-black);
+  padding-left: 10px;
+  background: none;
+  border: 0;
+  outline: 0;
+}
+
+.list-btn-add, .btn-delete {
+  all: revert;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  color: var(--clr-gray-dark);
+  cursor: pointer;
+}
+
+.btn-delete {
+  color: var(--clr-gray);
+}
+
+.list-btn-add:hover, .list-btn-add:focus,
+.btn-delete:hover, .btn-delete:focus {
+  color: var(--clr-primary);
+}
