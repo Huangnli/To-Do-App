@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function LoginForm({ Login, error }) {
     const [details, setDetails] = useState({ name: "", email: "", password: "" });
@@ -12,7 +13,7 @@ function LoginForm({ Login, error }) {
         <form onSubmit={submitHandler} autoComplete="off">
             <div className="form-inner">
                 <h2>Crie sua conta</h2>
-                {(error != "") ? (<div className="error">{error}</div>) : ""}
+                {(error !== "") ? (<div className="error">{error}</div>) : ""}
                 <div className="form-group">
                     <div class="input-group">
                         <label htmlFor="name">Nome:</label>
@@ -50,10 +51,9 @@ function LoginForm({ Login, error }) {
                 <input type="submit" value="Login" />
 
                 <div className="form-group">
-                    <a>Já possui uma conta? </a>
-                    <a href='#Login'>
-                        Faça o login
-                    </a>
+                    <Link to='/Login'>
+                        <button>Faça o login</button>
+                    </Link>
                 </div>
             </div>
         </form>
