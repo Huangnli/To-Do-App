@@ -50,6 +50,7 @@ form .form-inner{
 
 form .form-inner h2{
   font: bold;
+  margin: 15px;
 }
 
 form .form-inner .form-group{
@@ -57,17 +58,27 @@ form .form-inner .form-group{
 }
 
 form .form-inner .form-group label{
-
-
+  bottom: 10px;
+  left: 0;
+  pointer-events: none;
+  font-size: 15px;
 }
 
 form .form-inner .form-group input{
-
+  width: 80%;
+  height: 100%;
 }
 
-form .form-inner .form-group input:focus{
+form .input-group{
+  background-color: rgb(184, 181, 181);
+  padding: 5%;
+  margin: 5px;
+  border-radius: 8px;
+  width: 100%;
+}
+/* form .form-inner .form-group input:focus{
 box-shadow: 0 4px 8px  rgb(85, 85, 85);
-}
+} */
 
 form .form-inner .form-group:focus-within label{
   color: black;
@@ -78,9 +89,7 @@ form .form-inner input[type="submit"]{
   padding: 10px 15px;
   border-radius: 8px;
   background-color: rgb(199, 81, 81);
-  width: 105%;
   margin-top: 15px;
-  cursor: pointer;
 }
 
 form .form-inner input[type="submit"]:hover{
