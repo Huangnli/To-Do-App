@@ -51,6 +51,7 @@ function LoginForm({ Login, error }) {
                 <input type="submit" value="Login" />
 
                 <div className="form-group">
+                    <a>Já possui uma conta? </a>
                     <Link to='/Login'>
                         <button>Faça o login</button>
                     </Link>
