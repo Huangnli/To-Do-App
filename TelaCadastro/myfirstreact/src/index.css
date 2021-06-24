@@ -37,7 +37,7 @@ form::after{
 } */
 
 form .form-inner{
-  position: relative;
+  /* position: relative; */
   height: 50vh;
   display: flex;
   background-color: rgb(255, 255, 255);
@@ -74,7 +74,6 @@ form .input-group{
   padding: 5%;
   margin: 5px;
   border-radius: 8px;
-  width: 100%;
 }
 /* form .form-inner .form-group input:focus{
 box-shadow: 0 4px 8px  rgb(85, 85, 85);
