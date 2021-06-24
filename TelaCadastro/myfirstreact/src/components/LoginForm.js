@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
-function LoginForm({Login, error}) {
-    const [details, setDetails] = useState({name: "", email: "", password: ""});
+function LoginForm({ Login, error }) {
+    const [details, setDetails] = useState({ name: "", email: "", password: "" });
 
-    const submitHandler = e =>{
+    const submitHandler = e => {
         e.preventDefault();
 
         Login(details);
@@ -12,19 +12,51 @@ function LoginForm({Login, error}) {
         <form onSubmit={submitHandler} autoComplete="off">
             <div className="form-inner">
                 <h2>Crie sua conta</h2>
-                {(error != "")? (<div className="error">{error}</div>) : ""}
+                {(error != "") ? (<div className="error">{error}</div>) : ""}
                 <div className="form-group">
-                    <label htmlFor="name">Nome:</label>
-                    <input type="text" name="name" id="name" onChange={e =>setDetails({...details, name: e.target.value})} value={details.name}/>                
-                    
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" name="email" id="email" onChange={e =>setDetails({...details, email: e.target.value})} value={details.email}/>
-                    
-                    <label htmlFor="password">Senha:</label>
-                    <input type="password" name="password" id="password" onChange={e =>setDetails({...details, password: e.target.value})} value={details.password}/>
+                    <div class="input-group">
+                        <label htmlFor="name">Nome:</label>
+                        <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            value={details.name}
+                            onChange={e => setDetails({ ...details, name: e.target.value })}
+                        />
+                    </div>
+
+                    <div class="input-group">
+                        <label htmlFor="email">Email:</label>
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            value={details.email}
+                            onChange={e => setDetails({ ...details, email: e.target.value })}
+                        />
+                    </div>
+
+                    <div class="input-group">
+                        <label htmlFor="password">Senha:</label>
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            value={details.password}
+                            onChange={e => setDetails({ ...details, password: e.target.value })}
+                        />
+                    </div>
                 </div>
+
                 <div className="form-group">
-                    <input type="submit" value="Login"/>
+                    <input type="submit" value="Login" />
+                </div>
+
+                <div className="form-group">
+                    <a>Já possui uma conta? </a>
+                    <a href='#Login'>
+                        Faça o login
+                    </a>
                 </div>
             </div>
         </form>
