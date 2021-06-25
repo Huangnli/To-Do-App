@@ -53,7 +53,7 @@ function LoginForm({ Login, error }) {
                 <div className="form-group">
                     <a>Já possui uma conta? </a>
                     <Link to='/Login'>
-                        <button>Faça o login</button>
+                        <a>Faça o login</a>
                     </Link>
                 </div>
             </div>
