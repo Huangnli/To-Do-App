@@ -5,8 +5,6 @@ import { signIn } from '../services/auth';
 import AuthTextField from '../components/AuthTextField';
 import Button from '../components/Button';
 
-import logo from '../imagem/logo.svg';
-
 import { Link } from 'react-router-dom'
 
 import '../css/Register.css';
@@ -45,17 +43,16 @@ const Register = () => {
           />
           <Button
             className={"btn--auth"}
-            children={"Registrar"}
+            children={"Criar conta"}
             type={"submit"}
           // onClick={}
           />
         </div>
-        <input type="submit" value="Cadastro" />
 
         <div class="form-group">
           <a>Já possui uma conta? </a>
           <Link to='/Login'>
-            <a>Faça o login</a>
+            Faça o login
           </Link>
         </div>
       </div>
