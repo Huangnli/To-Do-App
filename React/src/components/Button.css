@@ -1,0 +1,59 @@
+.btn--auth {
+  width: 17rem;
+  height: 2.2rem;
+  background-color: var(--clr-primary);
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  margin: 1em 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: var(--fw-medium);
+}
+
+.btn--create-list {
+  background-color: var(--clr-secondary);
+  font-weight: var(--fw-bold);
+  font-size: 1em;
+  color: var(--clr-gray);
+  margin-left: 2em;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn--create-list:hover {
+  color: white;
+}
+
+.btn--list-add, .btn--list-delete, .btn--task-delete {
+  border: 0;
+  padding-top: 3px;
+  background: none;
+  box-shadow: none;
+  color: var(--clr-gray-dark);
+  cursor: pointer;
+}
+
+.btn--task-delete {
+  color: white;
+}
+
+.btn--list-delete {
+  color: var(--clr-gray);
+}
+
+.btn--list-add:hover,
+.btn--list-delete:hover,
+.btn--search-bar:hover,
+.btn--task-delete:hover {
+  color: var(--clr-primary);
+}
+
+.btn--search-bar {
+  all: revert;
+  border: 0;
+  background: var(--clr-white);
+  box-shadow: none;
+  color: var(--clr-gray-dark);
+  cursor: pointer;
+}

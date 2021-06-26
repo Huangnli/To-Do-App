@@ -1,0 +1,10 @@
+.textinput--auth {
+  width: 17rem;
+  height: 2.2rem;
+  border: 0;
+  border-radius: 5px;
+  padding: 1em;
+  margin: 0.7em 0;
+  background-color: var(--clr-gray-light);
+  font-family: 'Roboto', sans-serif;
+}

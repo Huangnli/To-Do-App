@@ -1,0 +1,55 @@
+.list-container {
+  background: white;
+  width: 100%;
+  border: 2px solid var(--clr-gray);
+  padding: 1.3em;
+}
+
+.list-info {
+  display: flex;
+  font-family: 'Inter', sans-serif;
+  color: var(--clr-black);
+}
+
+.delete-list {
+  position: relative;
+  text-align: end;
+  transform: translate(13px, -13px);
+}
+
+.list-name {
+  flex: 1;
+  width: 100%;
+  font-weight: var(--fw-bold);
+  font-size: 1.3em;
+  border: 1px solid transparent;
+}
+
+.list-name:focus {
+  outline: none;
+  border: 1px solid var(--clr-primary);
+}
+
+.list-options-container {
+  display: flex;
+  align-items: center;
+}
+
+.new-task-input {
+  display: flex;
+  flex: 1;
+  border-radius: 10px;
+  background: var(--clr-gray-light);
+  padding: 5px;
+}
+
+.name-new-task {
+  flex: 1;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9em;
+  color: var(--clr-black);
+  padding-left: 10px;
+  background: none;
+  border: 0;
+  outline: 0;
+}

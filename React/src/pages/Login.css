@@ -1,0 +1,26 @@
+.container {
+  justify-content: center;
+  margin: 0 10%;
+}
+
+.info {
+  background-color: var(--clr-secondary);
+}
+
+.arte {
+  width: 300px;
+}
+
+.main-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 50px;
+  background-color: white;
+}
+
+.title {
+  font-family: 'Inter', sans-serif;
+  font-size: 2rem;
+  font-weight: var(--fw-bold);
+}

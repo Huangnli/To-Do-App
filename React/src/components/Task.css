@@ -1,0 +1,58 @@
+.task-item-container {
+  display: flex;
+  align-items: center;
+}
+
+.task-info {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.task-info:hover~.btn--task-delete {
+  color: var(--clr-gray);
+}
+
+.task-name {
+  flex: 1;
+  margin-left: 0.8em;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9em;
+  color: var(--clr-black);
+  border: 1px solid transparent;
+}
+
+.task-name:focus {
+  outline: none;
+  border:1px solid var(--clr-primary);
+}
+
+input[type=checkbox] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  border: 2px solid var(--clr-primary);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type=checkbox]:after {
+  content: "\e876";
+  font-family: "Material Icons";
+  font-weight: 1000;
+  font-size: 1.2em;
+  color: var(--clr-primary);
+  display: none;
+}
+
+input[type=checkbox]:checked:after {
+  display: block;
+}
+
+input[type=checkbox]:checked~.task-name {
+  text-decoration: line-through;
+  color: var(--clr-gray-dark);
+}
