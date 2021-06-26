@@ -24,17 +24,6 @@ form{
   position: relative;
   width: 70vh;
 }
-/* 
-form::after{
-  content: '';
-  display: block;
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  background-color: white;
-} */
 
 form .form-inner{
   /* position: relative; */
@@ -53,41 +42,36 @@ form .form-inner h2{
   margin: 15px;
 }
 
-form .form-inner .form-group{
-
-}
 
 form .form-inner .form-group label{
   bottom: 10px;
   left: 0;
   pointer-events: none;
-  font-size: 15px;
+  font-size: 12px;
 }
 
 form .form-inner .form-group input{
   width: 80%;
   height: 100%;
 }
+form .form-inner .form-group a{
+  font-size: 15px;
+  padding-top: 50px;
+}
 
 form .input-group{
-  background-color: rgb(184, 181, 181);
+  color: #808082;
+  background-color: #EAEAEC;
   padding: 5%;
   margin: 5px;
   border-radius: 8px;
-}
-/* form .form-inner .form-group input:focus{
-box-shadow: 0 4px 8px  rgb(85, 85, 85);
-} */
-
-form .form-inner .form-group:focus-within label{
-  color: black;
 }
 
 form .form-inner input[type="submit"]{
   display: inline-block;
   padding: 10px 15px;
   border-radius: 8px;
-  background-color: rgb(199, 81, 81);
+  background-color: #EF3A5F;
   margin-top: 15px;
 }
 

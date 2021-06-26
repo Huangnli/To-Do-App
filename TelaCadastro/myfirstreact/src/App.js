@@ -7,16 +7,15 @@ function App () {
     password: "admin"
   }; 
 
-  const [user, setUser] = useState({name:"", email: ""});
+  const [user, setUser] = useState({email: ""});
   const [error, setError] = useState("");
 
-  const Login = details =>{
+  const Cadastro = details =>{
     console.log(details);
 
     if(details.email === adminUser.email && details.password === adminUser.password){
       console.log("Logged in");
       setUser({
-        name: details.name,
         email: details.email
       });
     }
@@ -27,18 +26,18 @@ function App () {
   }
 
   const Logout = () => {
-    setUser({name:"", email: ""});
+    setUser({email: ""});
   }
 
   return (
     <div className="App">
       {(user.email !== "")?(
         <div className="welcome">
-          <h2>Welcome, <span>{user.name}</span></h2>
+          <h2>Welcome, <span>{user.email}</span></h2>
           <button onClick={Logout}>Logout</button>
         </div>
       ):(
-        <LoginForm Login={Login} error={error}/>
+        <LoginForm Cadastro={Cadastro} error={error}/>
       )}
 
     </div>

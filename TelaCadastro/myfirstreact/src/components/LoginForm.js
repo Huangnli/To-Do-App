@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-function LoginForm({ Login, error }) {
-    const [details, setDetails] = useState({ name: "", email: "", password: "" });
+function LoginForm({ Cadastro, error }) {
+    const [details, setDetails] = useState({ email: "", password: "", passwordCheck: ""});
 
     const submitHandler = e => {
         e.preventDefault();
 
-        Login(details);
+        Cadastro(details);
     }
     return (
         <form onSubmit={submitHandler} autoComplete="off">
@@ -15,16 +15,6 @@ function LoginForm({ Login, error }) {
                 <h2>Crie sua conta</h2>
                 {(error !== "") ? (<div className="error">{error}</div>) : ""}
                 <div className="form-group">
-                    <div class="input-group">
-                        <label htmlFor="name">Nome:</label>
-                        <input
-                            type="text"
-                            name="name"
-                            id="name"
-                            value={details.name}
-                            onChange={e => setDetails({ ...details, name: e.target.value })}
-                        />
-                    </div>
 
                     <div class="input-group">
                         <label htmlFor="email">Email:</label>
@@ -47,10 +37,20 @@ function LoginForm({ Login, error }) {
                             onChange={e => setDetails({ ...details, password: e.target.value })}
                         />
                     </div>
+                    <div class="input-group">
+                        <label htmlFor="passwordCheck">Senha:</label>
+                        <input
+                            type="password"
+                            name="passwordCheck"
+                            id="passwordCheck"
+                            value={details.passwordCheck}
+                            onChange={e => setDetails({ ...details, passwordCheck: e.target.value })}
+                        />
+                    </div>
                 </div>
-                <input type="submit" value="Login" />
+                <input type="submit" value="Cadastro" />
 
-                <div className="form-group">
+                <div class="form-group">
                     <a>Já possui uma conta? </a>
                     <Link to='/Login'>
                         <a>Faça o login</a>
