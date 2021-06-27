@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import { signOut } from '../services/auth';
+import { AuthContext } from '../providers/AuthProvider';
 import { ListsContext } from '../providers/ListsProvider';
 
 import Button from '../components/Button';
@@ -9,6 +9,7 @@ import Button from '../components/Button';
 import './Header.css';
 
 const Header = ({ history }) => {
+  const { signOut } = useContext(AuthContext);
   const { createList } = useContext(ListsContext);
 
   async function handleSignOut() {

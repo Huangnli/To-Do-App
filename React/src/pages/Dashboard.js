@@ -1,6 +1,6 @@
 import { Redirect, useHistory } from 'react-router-dom';
 
-import { isAuthenticated } from '../services/auth';
+import { isAuthenticated } from '../providers/AuthProvider';
 import { ListsProvider } from '../providers/ListsProvider';
 
 import Header from '../components/Header';

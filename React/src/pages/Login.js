@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 
-import { isAuthenticated, signIn } from '../services/auth';
+import { AuthContext, isAuthenticated } from '../providers/AuthProvider';
 
 import AuthTextField from '../components/AuthTextField';
 import Button from '../components/Button';
@@ -9,6 +9,7 @@ import Button from '../components/Button';
 import './Login.css';
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   let history = useHistory();

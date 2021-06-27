@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, Redirect, useHistory } from 'react-router-dom'
 
-import { isAuthenticated, registerUser } from '../services/auth';
+import { AuthContext, isAuthenticated } from '../providers/AuthProvider';
 
 import AuthTextField from '../components/AuthTextField';
 import Button from '../components/Button';
 
 import './Register.css';
 
-const Register = ({ history }) => {
+const Register = () => {
+  const { registerUser, errorMessages } = useContext(AuthContext);
+  let history = useHistory();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,11 +20,9 @@ const Register = ({ history }) => {
     return <Redirect to="/dashboard" />;
 
   async function handleRegister() {
-    if (name && email && password && confirmPassword)
-    {
-      await registerUser(name, email, password);
-      history.push("/dashboard");
-    }
+    await registerUser(name, email, password, confirmPassword);
+    console.log(errorMessages);
+    //history.push("/dashboard");
   }
 
   return (
@@ -74,6 +74,16 @@ const Register = ({ history }) => {
             Faça o login
           </Link>
         </div>
+
+        { errorMessages !== null &&
+          <ul className="errorMessages">
+            {
+              Object.keys(errorMessages).map(key =>
+                <li value={key}>{errorMessages[key]}</li>
+              )
+            }
+          </ul>
+        }
       </div>
     </div>
   );
