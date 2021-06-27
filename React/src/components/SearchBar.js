@@ -17,11 +17,6 @@ const SearchBar = () => {
       resetSearch();
   }
 
-  function handleResetSearch() {
-    setText('');
-    resetSearch();
-  }
-
   return (
     <div className="search-bar-container">
       <div className="search-bar">
@@ -40,16 +35,6 @@ const SearchBar = () => {
           onChange={e => setText(e.target.value)}
           onKeyDown={e => e.key === "Enter" && handleSearch()}
         />
-        {
-          text !== '' &&
-          <Button
-            type="button"
-            className="btn--search-bar"
-            onClick={handleResetSearch}
-          >
-            <span className="material-icons">close</span>
-          </Button>
-        }
       </div>
     </div>
   );

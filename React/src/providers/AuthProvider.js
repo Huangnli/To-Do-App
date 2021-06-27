@@ -4,15 +4,14 @@ import { createContext, useState } from 'react';
 const TOKEN_KEY = "@todoapp-Token";
 const login = token => localStorage.setItem(TOKEN_KEY, token);
 const logout = () => localStorage.removeItem(TOKEN_KEY);
-
 export const isAuthenticated = () => localStorage.getItem(TOKEN_KEY) !== null;
-
 export const getToken = () => localStorage.getItem(TOKEN_KEY);
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [errorMessages, setErrorMessages] = useState(null);
+  const [errorRegister, setErrorRegister] = useState(null);
+  const [errorLogin, setErrorLogin] = useState(null);
 
   async function registerUser(name, email, password, confirmPassword) {
     await api.get('http://127.0.0.1:8000/sanctum/csrf-cookie');
@@ -24,10 +23,11 @@ export const AuthProvider = ({ children }) => {
       confirm_password: confirmPassword
     }).then(res => {
         login(res.data.access_token);
+        setErrorRegister(null);
         console.log(res);
       })
       .catch(err => {
-        setErrorMessages(err.response.data.errors);
+        setErrorRegister(err.response.data.errors);
         console.log(err);
       })
   }
@@ -40,9 +40,11 @@ export const AuthProvider = ({ children }) => {
       password: password
     }).then(res => {
         login(res.data.access_token);
+        setErrorLogin(null);
         console.log(res);
       })
       .catch(err => {
+        setErrorLogin(err.response.data.errors);
         console.log(err);
       })
   }
@@ -61,7 +63,8 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
-        errorMessages,
+        errorLogin,
+        errorRegister,
         getToken,
         isAuthenticated,
         registerUser,

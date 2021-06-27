@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import { AuthContext, isAuthenticated } from '../providers/AuthProvider';
 
@@ -9,26 +9,27 @@ import Button from '../components/Button';
 import './Register.css';
 
 const Register = () => {
-  const { registerUser, errorMessages } = useContext(AuthContext);
-  let history = useHistory();
+  const { registerUser, errorRegister } = useContext(AuthContext);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  let history = useHistory();
 
   if (isAuthenticated())
-    return <Redirect to="/dashboard" />;
+    history.push("/dashboard");
 
   async function handleRegister() {
     await registerUser(name, email, password, confirmPassword);
-    console.log(errorMessages);
-    //history.push("/dashboard");
+
+    if (errorRegister === null)
+      history.push("/dashboard");
   }
 
   return (
     <div className="register-page">
       <div className="form-register">
-        <h2>Crie sua conta</h2>
+        <h1>Crie sua conta</h1>
 
         <div className="form-group">
           <AuthTextField
@@ -75,11 +76,11 @@ const Register = () => {
           </Link>
         </div>
 
-        { errorMessages !== null &&
-          <ul className="errorMessages">
+        { errorRegister !== null &&
+          <ul className="errors">
             {
-              Object.keys(errorMessages).map(key =>
-                <li value={key}>{errorMessages[key]}</li>
+              Object.keys(errorRegister).map((key, index) =>
+                <li value={key} key={index}>{errorRegister[key]}</li>
               )
             }
           </ul>

@@ -32,7 +32,7 @@
 }
 
 .register-footer {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .link-to {
@@ -42,4 +42,10 @@
 
 .link-to:hover {
     color: var(--clr-primary-dark);
+}
+
+.errors {
+    margin-top: 50px;
+    color: red;
+    font-family: "Roboto", sans-serif;
 }

@@ -42,7 +42,7 @@ const Task = ({ id, name, isCompleted }) => {
         className="btn--task-delete"
         onClick={() => deleteTask(id)}
       >
-        <span className="material-icons">close</span>
+        <span className="material-icons">delete</span>
       </Button>
     </div>
   );

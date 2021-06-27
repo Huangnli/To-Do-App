@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { AuthContext, isAuthenticated } from '../providers/AuthProvider';
 
@@ -9,19 +9,19 @@ import Button from '../components/Button';
 import './Login.css';
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, errorLogin } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   let history = useHistory();
 
   if (isAuthenticated())
-    return <Redirect to="/dashboard" />;
+    history.push("/dashboard");
 
   async function handleLogin() {
-    if (email && password) {
-      await signIn(email, password);
+    await signIn(email, password);
+
+    if (errorLogin === null)
       history.push("/dashboard");
-    }
   }
 
   return (
@@ -70,6 +70,16 @@ const Login = () => {
             Registre-se
           </Link>
         </div>
+
+        { errorLogin !== null &&
+          <ul className="errors">
+            {
+              Object.keys(errorLogin).map((key, index) =>
+                <li value={key} key={index}>{errorLogin[key]}</li>
+              )
+            }
+          </ul>
+        }
       </div>
     </div>
   );
