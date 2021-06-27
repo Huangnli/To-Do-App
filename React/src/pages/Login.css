@@ -11,7 +11,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background-color: #26374C;
+    background-color: var(--clr-secondary);
 }
 
 .logo-login {
@@ -21,8 +21,9 @@
 }
 
 .Descricao {
+    font-family: 'Inter', sans-serif;
     display: flex;
-    color: #FFFFFF;
+    color: white;
     text-align: center;
     font-size: xx-large;
 }
@@ -43,6 +44,7 @@
     flex-direction: column;
     justify-content: center;
     justify-content: space-between;
+    background-color: white;
 }
 
 .login-titulo {
@@ -58,48 +60,33 @@
     flex-direction: column;
 }
 
-.login .form-inner h2 {
+.login h2 {
     font: bold;
     margin: 15px;
 }
 
-.login .form-inner .form-group label {
+.login label {
     bottom: 10px;
     left: 0;
     pointer-events: none;
     font-size: 15px;
 }
 
-.login .form-inner .form-group input {
+.login input {
     width: 80%;
     height: 100%;
 }
 
-.login .input-group {
-    color: #808082;
-    background-color: #EAEAEC;
+.login {
+    color: var(--clr-gray-dark);
+    background-color: var(--clr-gray-light);
     padding: 5%;
     margin: 5px;
     border-radius: 8px;
 }
 
-button {
-    display: flex;
-    padding: 10px 15px;
-    border-radius: 8px;
-    color: #FFFFFF;
-    text-align: center;
-    background-color: #EF3A5F;
-    margin-top: 15px;
-    flex-direction: column;
-    align-items: center;
-}
-
-button:hover{
-    background-color: darkred;
-    }
-
 .registrar {
+    font-family: 'Inter', sans-serif;
     padding: 5%;
 }
 
@@ -108,4 +95,3 @@ button:hover{
     font-size: 2rem;
     font-weight: var(--fw-bold);
 }
-  

@@ -1,20 +1,20 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { signIn } from '../services/auth';
+import { Link, Redirect, useHistory } from 'react-router-dom';
+
+import { isAuthenticated, signIn } from '../services/auth';
 
 import AuthTextField from '../components/AuthTextField';
 import Button from '../components/Button';
 
-import logo from '../imagem/logo.svg';
-
-import { Link } from 'react-router-dom'
-
-import '../css/Login.css';
+import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   let history = useHistory();
+
+  if (isAuthenticated())
+    return <Redirect to="/dashboard" />;
 
   async function handleLogin() {
     if (email && password) {
@@ -28,7 +28,7 @@ const Login = () => {
       <div className="Informacao">
         <div>
           <div className="logo-login">
-            <img src={logo} alt="Logo" />
+            <img src="./logo.svg" alt="Logo" />
           </div>
           <div className="Descricao">
             <p >Crie listas e organize suas tarefas dinamicamente.</p>
@@ -49,7 +49,7 @@ const Login = () => {
             onPressEnter={handleLogin}
           />
           <AuthTextField
-            placeholder={"Password"}
+            placeholder={"Senha"}
             value={password}
             type={"password"}
             onChange={setPassword}
@@ -64,8 +64,8 @@ const Login = () => {
         </div>
 
         <div className="registrar">
-          <a>Não possui uma conta? </a>
-          <Link to='/Register'>
+          Não possui uma conta?
+          <Link className='link-to' to='/Register'>
             Registre-se
           </Link>
         </div>

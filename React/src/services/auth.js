@@ -10,6 +10,22 @@ export const isAuthenticated = () => localStorage.getItem(TOKEN_KEY) !== null;
 
 export const getToken = () => localStorage.getItem(TOKEN_KEY);
 
+export async function registerUser(name, email, password) {
+  await api.get('http://127.0.0.1:8000/sanctum/csrf-cookie');
+
+  return api.post('http://127.0.0.1:8000/api/register', {
+    name: name,
+    email: email,
+    password: password
+  }).then(res => {
+      login(res.data.access_token);
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+}
+
 export async function signIn(email, password) {
   await api.get('http://127.0.0.1:8000/sanctum/csrf-cookie');
 

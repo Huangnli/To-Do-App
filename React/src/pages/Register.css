@@ -1,0 +1,45 @@
+.register-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.form-register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    font-family: 'Inter', sans-serif;
+    background-color: white;
+    padding: 80px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-register h2 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.register-footer {
+    margin-top: 20px;
+}
+
+.link-to {
+    text-decoration: none;
+    color: var(--clr-primary);
+}
+
+.link-to:hover {
+    color: var(--clr-primary-dark);
+}
