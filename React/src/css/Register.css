@@ -1,6 +1,5 @@
 * {
-    margin: 0;
-    padding: 0;
+    margin: auto;
     font-family: 'Inter', sans-serif;
 }
 
@@ -9,24 +8,21 @@ input, button {
     background: none;
     border: none;
     outline: none;
+    width: 100%;
 }
 
-.App {
-    height: 100vh;
+telaCadastro{
     display: flex;
-    align-items: center;
-    justify-content: center;
     background-color: rgb(243, 243, 243);
 }
-
 form {
-    display: block;
+    padding-top: 3%;
+    display: flex;
     position: relative;
     width: 70vh;
 }
 
 form .form-inner {
-    height: 50vh;
     display: flex;
     background-color: rgb(255, 255, 255);
     padding: 80px;
@@ -38,32 +34,19 @@ form .form-inner {
 
 form .form-inner h2 {
     font: bold;
-    margin: 15px;
+    margin: 25px;
 }
 
-form .form-inner .form-group label {
-    bottom: 10px;
-    left: 0;
-    pointer-events: none;
-    font-size: 12px;
-}
 
-form .form-inner .form-group input {
-    width: 80%;
+form .form-inner .form-group input.textinput--auth {
+    width: 100%;
     height: 100%;
 }
 
 form .form-inner .form-group a {
     font-size: 15px;
     padding-top: 50px;
-}
-
-form .input-group {
-    color: #808082;
-    background-color: #EAEAEC;
-    padding: 5%;
-    margin: 5px;
-    border-radius: 8px;
+    align-items: flex-end;
 }
 
 form .form-inner input[type="submit"] {
@@ -75,5 +58,5 @@ form .form-inner input[type="submit"] {
 }
 
 form .form-inner input[type="submit"]:hover {
-    background-color: darkred;
+    background-color: rgb(230, 8, 56);
 }

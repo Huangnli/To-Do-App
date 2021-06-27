@@ -14,6 +14,7 @@ const Register = () => {
   const [password, setPassword] = useState('');
 
   return (
+    <div className="telaCadastro">
     <form>
       <div className="form-inner">
         <h2>Crie sua conta</h2>
@@ -57,6 +58,7 @@ const Register = () => {
         </div>
       </div>
     </form>
+    </div>
   );
 }
 
