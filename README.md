@@ -3,12 +3,12 @@ To-Do é uma aplicação web para gerenciamento de tarefas diárias simples. Com
 
 ## Histórias de Usuário
 
-- [ ] Definir tarefas
-- [ ] Agrupar tarefas em listas
-- [ ] Modificar o status das tarefas
-- [ ] Visualizar tarefas e listas
+- [x] Definir tarefas
+- [x] Agrupar tarefas em listas
+- [x] Modificar o status das tarefas
+- [x] Visualizar tarefas e listas
 - [ ] Publicar listas
-- [ ] Buscar por tarefas e listas
+- [x] Buscar por tarefas e listas
 
 ## Histórias Bônus
 
