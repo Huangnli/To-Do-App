@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
       name: name,
       email: email,
       password: password,
-      confirm_password: confirmPassword
+      password_confirmation: confirmPassword
     }).then(res => {
         login(res.data.access_token);
         setErrorRegister(null);
