@@ -37,11 +37,12 @@ const Login = () => {
         </div>
         <img className="arte" src="/arte_login.png" alt="Duas pessoas segurando suas listas" />
       </div>
+
       <div className="login-box">
+        <div className='login-titulo'>
+          <h1 className="title">Login</h1>
+        </div>
         <div className="login-group">
-          <div className='login-titulo'>
-            <h1 className="title">Login</h1>
-          </div>
           <AuthTextField
             placeholder={"Email"}
             value={email}
@@ -62,24 +63,23 @@ const Login = () => {
             type={"submit"}
             onClick={() => handleLogin()}
           />
+          {errorLogin !== null &&
+            <ul className="errors">
+              {
+                Object.keys(errorLogin).map((key, index) =>
+                  <li value={key} key={index}>{errorLogin[key]}</li>
+                )
+              }
+            </ul>
+          }
         </div>
 
         <div className="registrar">
-          Não possui uma conta?
+          Não possui uma conta?&nbsp;
           <Link className='link-to' to='/Register'>
             Registre-se
           </Link>
         </div>
-
-        { errorLogin !== null &&
-          <ul className="errors">
-            {
-              Object.keys(errorLogin).map((key, index) =>
-                <li value={key} key={index}>{errorLogin[key]}</li>
-              )
-            }
-          </ul>
-        }
       </div>
     </div>
   );
