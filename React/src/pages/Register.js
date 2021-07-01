@@ -70,7 +70,7 @@ const Register = () => {
         </div>
 
         <div className="register-footer">
-            Já possui uma conta?
+            Já possui uma conta?&nbsp;
           <Link className="link-to" to='/Login'>
             Faça o login
           </Link>
