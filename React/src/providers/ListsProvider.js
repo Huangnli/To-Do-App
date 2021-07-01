@@ -31,6 +31,11 @@ export const ListsProvider = ({ children }) => {
   }
 
   function updateList(id, name) {
+    setLists(lists.map(list =>
+      list.id === id
+      ? {...list, name: name }
+      : list
+    ));
     api.put('http://127.0.0.1:8000/api/lists/' + id, {
       name: name
     }).then(res => {
