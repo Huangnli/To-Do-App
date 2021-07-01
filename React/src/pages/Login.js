@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 
 import { AuthContext, isAuthenticated } from '../providers/AuthProvider';
 
@@ -15,7 +15,7 @@ const Login = () => {
   let history = useHistory();
 
   if (isAuthenticated())
-    history.push("/dashboard");
+    return <Redirect to="/dashboard" />;
 
   async function handleLogin() {
     await signIn(email, password);
